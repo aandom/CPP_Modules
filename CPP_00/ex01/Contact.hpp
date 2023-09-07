@@ -41,6 +41,7 @@ class Contact
         void    view(int    index) const;
         void    display(int    index) const;
         void    set_index(int   i);
+        int     check_empty(int i);
 
 
         std::string	get_fname(void) const;

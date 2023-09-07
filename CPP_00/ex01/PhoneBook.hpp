@@ -19,6 +19,7 @@
 class PhoneBook
 {
     private:
+        int     is_empty;
         Contact mycontacts[8];
         int     get_input(void) const;
     
@@ -30,6 +31,7 @@ class PhoneBook
         void    search(void) const;
         void    start(void) const;
         std::string trim_space(std::string str);
+        int         searchCon(void) const;
 };
 
 

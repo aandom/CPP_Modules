@@ -12,10 +12,6 @@
 
 #include "Contact.hpp"
 
-// Contact::Contact()
-// {
-// }
-
 Contact::Contact(void) : isvalid(false) {
 	return ;
 }
@@ -50,32 +46,6 @@ std::string Contact::read_input(std::string str) {
 	input = trim_sp(input);
 	return (input);
 }
-
-
-
-
-// std::string Contact::read_input(std::string str) const {
-//     std::string user_input = "";
-//     int isvalid = 0;
-
-//     while(!isvalid) {
-//         std::cout << str << std::flush;
-//         std::getline (std::cin, user_input);
-//         if (std::cin.good() && !user_input.empty()) {
-//             isvalid = 1;
-//         } else if (std::cin.eof()) {
-//             std::cout << "returning NULL" << std::endl;
-//             return ("");
-//         } 
-//         else {
-//             std::cin.clear();
-//             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//             std::cout << "ERROR INVALID INPUT : please put valid input..." << std::endl;
-//         }
-
-//     }
-//     return (user_input);
-// }
 
 bool	Contact::validate_input(std::string str) {
     for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
@@ -221,4 +191,10 @@ void    Contact::display (int  index) const {
     std::cout << "Dark Secret:\t" << this->darkSecret << std::endl;
     std::cout << std::endl;
 
+}
+
+int Contact::check_empty(int  i) {
+    if (this->firstName.empty() || this->lastName.empty() || this->nickName.empty())
+        return (0);
+    return (1);
 }

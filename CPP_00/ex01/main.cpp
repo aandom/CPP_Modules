@@ -38,18 +38,13 @@ int main(void) {
         if (input == "EXIT") {
             break;
         } else if (input == "ADD") {
-            std::cout << "ADD" << std::endl;
             if (!myphonebook.add())
                 break;
-            // myphonebook.add();
         } else if (input == "SEARCH") {
-            std::cout << "SEARCH" << std::endl;
-
-            // if (!myphonebook.search())
-                // break;
-            myphonebook.display_contacts();
-            myphonebook.search();
-            break;
+            if(myphonebook.searchCon()) {
+                myphonebook.display_contacts();
+                myphonebook.search();
+            } 
         } else {
                 std::cout << "[---USAGE---]" << std::endl;
                 std::cout << "ADD\t: To add a contact." << std::endl;

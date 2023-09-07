@@ -12,7 +12,7 @@
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
+PhoneBook::PhoneBook() : is_empty(0)
 {
 }
 
@@ -57,19 +57,29 @@ bool   PhoneBook::add(void) {
     if (!this->mycontacts[i % 8].start_input())
         return (false);
     this->mycontacts[i % 8].set_index(i % 8);
-    display_contacts();
+    is_empty = 1;
     i++;
     return (true);
 }
 
 void    PhoneBook::display_contacts(void) const {
-    std::cout << "[----------------- MY PHONEBOOK CONTACTS -----------------]" << std::endl;
     for (size_t i = 0; i < 8; i++)
     {
         this->mycontacts[i].view(i);
     }
     std::cout << std::endl;
 }
+
+int    PhoneBook::searchCon(void) const {
+
+    std::cout << "[----------------- MY PHONEBOOK CONTACTS -----------------]" << std::endl << std::endl;
+    if (is_empty == 0) {
+        std::cout << "Empty Phonebook" << std::endl;
+        return (0);
+    }
+    return (1);
+}
+
 
 int    PhoneBook::get_input() const {
     int index = -1;
@@ -79,6 +89,11 @@ int    PhoneBook::get_input() const {
         std::cin >> index;
         if ((std::cin.good() && index >= 0 && index < 8) || std::cin.eof()) {
             isvalid = 1;
+            if (mycontacts[index].check_empty(index)) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                 std::cout << "ERROR INVALID INDEX: please enter again..." << std::endl;
+            }
         } else {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

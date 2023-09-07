@@ -21,7 +21,7 @@ $(NAME):
 all: $(NAME)
 
 clean: 
-		rm -rf $(NAME)
+		rm -f $(NAME)
 fclean: clean
 
 re: fclean all
