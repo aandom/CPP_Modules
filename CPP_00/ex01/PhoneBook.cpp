@@ -141,28 +141,3 @@ int    PhoneBook::searchCon(void) {
     }
     return (1);
 }
-
-
-int    PhoneBook::get_input() const {
-    int index = -1;
-    int isvalid = 0;
-    while (!isvalid) {
-        std::cout << "ENTER CONTACT INDEX: " << std::flush;
-        std::cin >> index;
-        if ((std::cin.good() && (index >= 0 && index < 8)) || std::cin.eof()) {
-            isvalid = 1;
-        } else {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "ERROR INVALID INDEX: please enter again..." << std::endl;
-        }
-    }
-    if (std::cin.eof())
-        return (7);
-    return (index);
-}
-
-void    PhoneBook::search(void) const {
-    int i = this->get_input();
-    this->mycontacts[i].display(i);
-}

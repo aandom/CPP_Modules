@@ -50,6 +50,7 @@ Account::~Account(void)	{
 	return ;
 }
 
+
 int Account::getNbAccounts( void ){
     return (Account::_nbAccounts);
 }
