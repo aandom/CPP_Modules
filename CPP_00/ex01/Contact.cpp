@@ -179,9 +179,9 @@ void    Contact::view (int  index) const {
 
 }
 
-void    Contact::display (int  index) const {
+int    Contact::display (int  index) const {
     if (this->firstName.empty() || this->lastName.empty() || this->nickName.empty())
-        return ;
+        return (0);
     std::cout << std::endl;
     std::cout << "[--------- Contact #" << index << "---------]" << std::endl;
     std::cout << "First Name:\t" << this->firstName << std::endl;
@@ -191,10 +191,11 @@ void    Contact::display (int  index) const {
     std::cout << "Dark Secret:\t" << this->darkSecret << std::endl;
     std::cout << std::endl;
 
-}
-
-int Contact::check_empty(int  i) {
-    if (this->firstName.empty() || this->lastName.empty() || this->nickName.empty())
-        return (0);
     return (1);
 }
+
+// int Contact::check_empty(int  i) {
+//     if (this->firstName.empty() || this->lastName.empty() || this->nickName.empty())
+//         return (0);
+//     return (1);
+// }

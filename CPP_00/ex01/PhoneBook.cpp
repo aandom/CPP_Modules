@@ -51,6 +51,15 @@ void    PhoneBook::start(void) const {
 }
 
 
+bool PhoneBook::allDigits(std::string str) {
+    for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+		if (!std::isdigit(*it)) {
+			return (false);
+		}
+	}
+	return (true); 
+}
+
 
 bool   PhoneBook::add(void) {
     static int i;
@@ -70,12 +79,65 @@ void    PhoneBook::display_contacts(void) const {
     std::cout << std::endl;
 }
 
-int    PhoneBook::searchCon(void) const {
+int	PhoneBook::printContact(std::string const input) {
 
+	int			index;
+    std::string scopy = input;
+
+	if (this->allDigits(input)) {
+        std::istringstream iss(scopy);
+        iss >> index;
+		if (index >= 0 && index <= 7) {
+			if (this->mycontacts[index].display(index))
+				return (0);
+			else {
+				std::cout << "No record at index [" << index << "]" << std::endl;
+				return (0);
+			}
+		}
+        else {
+	        std::cout << "ERROR Invalid Index: please enter again..." << std::endl;
+            return (1);
+        }
+	}
+     std::cout << "ERROR Index must be an Int value..." << std::endl;
+	return (1);
+    }
+
+
+std::string PhoneBook::getIndex(std::string str) {
+	std::string	input;
+
+	std::cout << str ;
+	if (!std::getline(std::cin, input) || std::cin.eof()) {
+		std::cout << std::endl;
+		return(std::string());
+	}
+	// input = trim_sp(input);
+    if(input.empty()) {
+        return (" ");
+    }
+	return (input);
+}
+
+int    PhoneBook::searchCon(void) {
+    std::string input;
+    int         status;
+
+    status = 1;
     std::cout << "[----------------- MY PHONEBOOK CONTACTS -----------------]" << std::endl << std::endl;
     if (is_empty == 0) {
         std::cout << "Empty Phonebook" << std::endl;
-        return (0);
+        return (1);
+    }
+    display_contacts();
+    while (status)
+    {
+        input = getIndex("ENTER CONTACT INDEX: ");
+        if(input.empty()){
+            return(0);
+        }
+        status  = printContact(input);
     }
     return (1);
 }
@@ -87,13 +149,8 @@ int    PhoneBook::get_input() const {
     while (!isvalid) {
         std::cout << "ENTER CONTACT INDEX: " << std::flush;
         std::cin >> index;
-        if ((std::cin.good() && index >= 0 && index < 8) || std::cin.eof()) {
+        if ((std::cin.good() && (index >= 0 && index < 8)) || std::cin.eof()) {
             isvalid = 1;
-            if (mycontacts[index].check_empty(index)) {
-                std::cin.clear();
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                 std::cout << "ERROR INVALID INDEX: please enter again..." << std::endl;
-            }
         } else {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

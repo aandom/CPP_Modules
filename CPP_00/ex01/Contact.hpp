@@ -39,7 +39,7 @@ class Contact
 
         bool    start_input(void);
         void    view(int    index) const;
-        void    display(int    index) const;
+        int     display(int    index) const;
         void    set_index(int   i);
         int     check_empty(int i);
 
