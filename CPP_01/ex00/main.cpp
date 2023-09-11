@@ -37,11 +37,11 @@ int main(void) {
     std::cin >> name;
 
     Zombie *zombiOnHeap = newZombie(get_color (CYAN, name));
-    // zombiOnHeap->announce();
+    zombiOnHeap->announce();
     
 
     std::cout << "Calling randomChump()." << std::endl;
     randomChump(get_color(BLUE, "Random"));
-    // delete zombiOnHeap;
+    delete zombiOnHeap;
     return 0;
 }
