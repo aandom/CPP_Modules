@@ -13,10 +13,11 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie (void) {
+     std::cout << "A Default constructor called" << std::endl;
 }
 
 Zombie::~Zombie(void) {
-    std::cout << "A Destructor for a Zombie with name " << this->zname << std::endl;
+    std::cout << "A Destructor for a Zombie with name [ " << this->zname <<  " ] called" << std::endl;
     return ; 
 }
 

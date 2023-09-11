@@ -14,7 +14,7 @@
 
 int main( void ) {
     int N = 8;
-    Zombie *arrayOfZombies = zombieHorde(N, "zombi");
+    Zombie *arrayOfZombies = zombieHorde(N, "");
 
     for (int i = 0; i < N; i++) {
         arrayOfZombies[i].announce();

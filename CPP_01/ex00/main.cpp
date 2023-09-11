@@ -25,23 +25,17 @@ int main(void) {
     std::string name;
 
     std::cout << "Creating zombie on the stack..........." << std::endl;
-    std::cout << "Enter Zombie name: " << std::flush;
-    std::cin >> name;
-
-    Zombie zombiOnStack(get_color (YELLOW, name));
-
+    Zombie zombiOnStack(get_color (YELLOW, "Zombie_1"));
 
     
     std::cout << "Creating zombie on the heap............" << std::endl;
-    std::cout << "Enter Zombie name: " << std::flush;
-    std::cin >> name;
-
-    Zombie *zombiOnHeap = newZombie(get_color (CYAN, name));
-    // zombiOnHeap->announce();
+    Zombie *zombiOnHeap = newZombie(get_color (CYAN," Zombie_2"));
+    std::cout << "Calling announce for" <<  get_color (CYAN," Zombie_2") << std::endl;
+    zombiOnHeap->announce();
     
 
     std::cout << "Calling randomChump()." << std::endl;
     randomChump(get_color(BLUE, "Random"));
-    // delete zombiOnHeap;
+    delete zombiOnHeap;
     return 0;
 }
