@@ -19,19 +19,21 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+Account::Account(void) {
 
-Account::Account(void) : _accountIndex(_nbAccounts),
-                         _amount(0),
-                         _nbDeposits(0),
-                         _nbWithdrawals(0) {
+    _accountIndex = _nbAccounts;
+    _amount = 0;
+    _nbDeposits = 0;
+    _nbWithdrawals = 0;
     Account::_nbAccounts++;
     return ;
 }
 
-Account::Account(int deposit) : _accountIndex(_nbAccounts),
-                         _amount(deposit),
-                         _nbDeposits(0),
-                         _nbWithdrawals(0) {
+Account::Account(int deposit) {
+    _accountIndex = _nbAccounts;
+    _amount = deposit;
+    _nbDeposits = 0;
+    _nbWithdrawals = 0;
     Account::_nbAccounts++;
     Account::_totalAmount += _amount;
     _displayTimestamp();
@@ -40,6 +42,7 @@ Account::Account(int deposit) : _accountIndex(_nbAccounts),
 				<< "created" << std::endl;
     return ;
 }
+
 
 Account::~Account(void)	{
 	Account::_nbAccounts--;

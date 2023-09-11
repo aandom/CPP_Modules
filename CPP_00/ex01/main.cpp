@@ -44,15 +44,7 @@ int main(void) {
             if(!myphonebook.searchCon()) {
                 break;
             } 
-        } else {
-                // std::cout << "[---USAGE---]" << std::endl;
-                // std::cout << "ADD\t: To add a contact." << std::endl;
-                // std::cout << "SEARCH\t: To search for a contact." << std::endl;
-                // std::cout << "EXIT\t: to quite the PhoneBook." << std::endl;
-                // std::cout << "............................................." << std::endl;
-                // std::cout << std::endl;
-        }
-        // std::cout << ">>>> " << std::flush;
+        } 
     }
     return (0);
 }

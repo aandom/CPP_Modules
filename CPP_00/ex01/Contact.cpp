@@ -193,9 +193,3 @@ int    Contact::display (int  index) const {
 
     return (1);
 }
-
-// int Contact::check_empty(int  i) {
-//     if (this->firstName.empty() || this->lastName.empty() || this->nickName.empty())
-//         return (0);
-//     return (1);
-// }

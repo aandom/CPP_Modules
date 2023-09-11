@@ -35,11 +35,11 @@ std::string PhoneBook::trim_space(std::string str) {
 
 void    PhoneBook::start(void) const {
     std::cout << std::endl;
-    std::cout << "-------------------------------------------" << std::endl;
+    std::cout << "<------------------------------------------->" << std::endl;
     std::cout << "|                                         |" << std::endl;
     std::cout << "| ###########-MY PHONE BOOK-###########   |" << std::endl;
     std::cout << "|                                         |" << std::endl;
-    std::cout << "-------------------------------------------" << std::endl;
+    std::cout << "<------------------------------------------->" << std::endl;
     std::cout << std::endl;
     std::cout << "............................................." << std::endl;
     std::cout << "[---USAGE---]" << std::endl;
@@ -113,7 +113,6 @@ std::string PhoneBook::getIndex(std::string str) {
 		std::cout << std::endl;
 		return(std::string());
 	}
-	// input = trim_sp(input);
     if(input.empty()) {
         return (" ");
     }
@@ -130,6 +129,13 @@ int    PhoneBook::searchCon(void) {
         std::cout << "Empty Phonebook" << std::endl;
         return (1);
     }
+    std::cout << "_____________________________________________" << std::flush << std::endl;
+    std::cout << "|" << std::setw(10) << "INDEX" << std::flush;
+    std::cout << "|" << std::setw(10) << "FIRSTNAME"<< std::flush;
+    std::cout << "|" << std::setw(10) << "LASTNAME" << std::flush;
+    std::cout << "|" << std::setw(10) << "NICKNAME" << std::flush;
+    std::cout << "|" << std::endl;
+    std::cout << "---------------------------------------------" << std::flush << std::endl;
     display_contacts();
     while (status)
     {
