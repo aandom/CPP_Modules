@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/30 03:11:09 by aandom            #+#    #+#              #
-#    Updated: 2023/08/30 03:11:09 by aandom           ###   ########.fr        #
+#    Created: 2023/09/11 08:48:22 by aandom            #+#    #+#              #
+#    Updated: 2023/09/11 08:48:22 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = diamondtrap
 
-SRC = Harl.cpp main.cpp
+SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -34,3 +34,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean re
+
+

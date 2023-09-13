@@ -14,7 +14,7 @@
 
 int main(void) {
 
-    ClapTrap    clap1("clap1");
+    ClapTrap    clap1("clap3");
     ClapTrap    clap2("clap2");
 
     std::cout << clap1.getDamageP() << std::endl;

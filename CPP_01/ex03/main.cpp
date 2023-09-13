@@ -15,7 +15,7 @@
 
 int main()
 {
-    Weapon club1 = Weapon("");
+    Weapon club1 = Weapon(NULL);
 
     HumanA bob("Bob", club1);
 
