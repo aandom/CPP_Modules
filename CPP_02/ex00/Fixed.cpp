@@ -35,7 +35,7 @@ Fixed::~Fixed( void) {
 }
 
 Fixed   & Fixed::operator=( Fixed const & src) {
-    std::cerr << YELLOW "Copy assignment operator called." RESET << std::endl;
+    std::cerr << YELLOW "Copy assignment operator overload called." RESET << std::endl;
     if(this != &src) {
         this->_fixedNnum = src.getRawBits();
     }
@@ -49,8 +49,6 @@ int Fixed::getRawBits( void ) const {
     return (this->_fixedNnum);
 }
 
-
-void    setRawBits( int const raw );
 
 void    Fixed::setRawBits( int  const raw ) {
     std::cerr << BLUE "setRawBit member function called." RESET << std::endl;
