@@ -23,11 +23,15 @@ class Sed
     private:
         std::string infile;
         std::string outfile;
+        std::ifstream   ifs;
+        std::ofstream   ofs;
         
     public:
         Sed(std::string fileName);
         ~Sed();
-        void    replacestr(std::string to_find, std::string to_replace);
+        int     openfiles();
+        int     replacestr(std::string to_find, std::string to_replace);
+
 };
 
 # endif

@@ -17,7 +17,10 @@ HumanB::HumanB(std::string ha_name) : hname(ha_name), weapon(NULL) {
 
 
 void    HumanB::setWeapon(Weapon &ha_weapon) {
-    this->weapon = &ha_weapon;
+    if (ha_weapon.getType().empty())
+        this->weapon = NULL;
+    else
+        this->weapon = &ha_weapon;
 }
 
 

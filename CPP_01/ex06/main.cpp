@@ -13,30 +13,6 @@
 #include "Harl.hpp"
 
 
-// int main( void ) {
-
-//     // std::string input;
-//     // Harl        harl;
-
-//     // do
-//     // {
-//     //     std::cout << "Enter a level: ";
-//     //     std::cin >> input;
-//     //     harl.complain(input);
-//     // } while (input.compare("exit"));
-
-//     // return 0;
-
-//     Harl	harl;
-
-// 	harl.complain("DEBUG");
-// 	harl.complain("ERROR");
-// 	harl.complain("INFO");
-// 	harl.complain("WARNING");
-// 	harl.complain("BAD_JOKES");
-// 	return ( 0 );
-// }
-
 int	main( int ac, char **av )
 {
 	Harl	harlFilter;

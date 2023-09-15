@@ -15,7 +15,7 @@ NAME = harlFilter
 SRC = Harl.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -Wimplicit-fallthrough=0 -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -Wno-implicit-fallthrough -std=c++98
 
 %.o: %.cpp
 	$(CC) $(CPPFLAGS) -c $< -o $@

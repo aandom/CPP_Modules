@@ -19,7 +19,9 @@ int main (int ac, char **av )
         return 1;
     } else {
         Sed   sed(av[1]);
-        sed.replacestr(av[2], av[3]);
+        if ( sed.replacestr(av[2], av[3]) == -1) {
+            return (1);
+        }
     }
     return 0;
 }

@@ -12,6 +12,9 @@
 
 #include "Weapon.hpp"
 
+Weapon::Weapon(void) : type(""){
+}
+
 Weapon::Weapon(std::string  const wtype) : type(wtype) {
 }
 
