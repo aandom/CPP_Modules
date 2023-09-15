@@ -22,23 +22,27 @@ int	main( void )
 	Point const b(0, 9);
 	Point const c(8, 0);
 	Point const p(1.0f, 5.0f);
+	Point const n = a;
+
+	bool	res2 = bsp(a, b, c, p);
 
 	std::cout << "point A (" << a.get_x() << ", " << a.get_y() << ")" << std::endl;
 	std::cout << "point B (" << b.get_x() << ", " << b.get_y() << ")" << std::endl;
 	std::cout << "point C (" << c.get_x() << ", " << c.get_y() << ")" << std::endl;
 	std::cout << "point P (" << p.get_x() << ", " << p.get_y() << ")" << std::endl;
-	std::cout << "Is point P inside triangle ABC : " << std::boolalpha  << bsp(a, b, c, p) << std::endl;
+	std::cout << "Is point P inside triangle ABC : " << std::boolalpha  << res2 << std::endl;
 	std::cout<<std::endl;
 
 	Point const e(0, 0);
 	Point const f(0, 3);
 	Point const g(8, 0);
 	Point const m(0.0f, 2.0f);
+	bool 	res = bsp(e, f, g, m);
 
 	std::cout << "point E (" << e.get_x() << ", " << e.get_y() << ")" << std::endl;
 	std::cout << "point F (" << f.get_x() << ", " << f.get_y() << ")" << std::endl;
 	std::cout << "point G (" << g.get_x() << ", " << g.get_y() << ")" << std::endl;
 	std::cout << "point M (" << m.get_x() << ", " << m.get_y() << ")" << std::endl;
-	std::cout << "Is point M inside triangle EFG : " << std::boolalpha  << bsp(e, f, g, m) << std::endl;
+	std::cout << "Is point M inside triangle EFG : " << std::boolalpha  << res << std::endl;
 	return ( 0 );
 }
