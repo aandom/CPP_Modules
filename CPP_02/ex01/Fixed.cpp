@@ -19,33 +19,33 @@
 #define BLUE "\e[34m"
 
 Fixed::Fixed( void ) : _fixedNnum (0){
-    std::cerr << CYAN "Default constructor called." RESET << std::endl;
+    std::cout << CYAN "Default constructor called." RESET << std::endl;
 	return ;
 }
 
 Fixed::Fixed ( Fixed const & src) {
-    std::cerr << CYAN "Copy constructor called." RESET << std::endl;
+    std::cout << CYAN "Copy constructor called." RESET << std::endl;
     *this = src;
 	return ;
 }
 
 Fixed::Fixed( int const num ) : _fixedNnum (num << _fBits){
-    std::cerr << CYAN "Int constructor called." RESET << std::endl;
+    std::cout << CYAN "Int constructor called." RESET << std::endl;
 	return ;
 }
 
 Fixed::Fixed( float const num ) : _fixedNnum ( roundf( num  * ( 1 << _fBits)) ){
-    std::cerr << CYAN "Float constructor called." RESET << std::endl;
+    std::cout << CYAN "Float constructor called." RESET << std::endl;
 	return ;
 }
 
 Fixed::~Fixed( void) {
-    std::cerr << GREEN "Destructor called." RESET << std::endl;
+    std::cout << GREEN "Destructor called." RESET << std::endl;
 	return ;
 }
 
 Fixed   & Fixed::operator=( Fixed const & src) {
-    std::cerr << YELLOW "Copy assignment operator called." RESET << std::endl;
+    std::cout << YELLOW "Copy assignment operator called." RESET << std::endl;
     if(this != &src) {
         this->_fixedNnum = src.getRawBits();
     }
@@ -55,12 +55,12 @@ Fixed   & Fixed::operator=( Fixed const & src) {
 
 
 int Fixed::getRawBits( void ) const {
-    std::cerr << BLUE "getRawBits member function called." RESET << std::endl;
+    // std::cout << BLUE "getRawBits member function called." RESET << std::endl;
     return (this->_fixedNnum);
 }
 
 void    Fixed::setRawBits( int  const raw ) {
-    std::cerr << BLUE "setRawBit member function called." RESET << std::endl;
+    // std::cout << BLUE "setRawBit member function called." RESET << std::endl;
     this->_fixedNnum = raw;
     return ;
 }

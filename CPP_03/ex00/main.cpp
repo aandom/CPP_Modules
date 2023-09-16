@@ -35,8 +35,8 @@ int main(void) {
     clap1.attack("clap2");
     clap1.attack("clap2");
     clap1.attack("clap2");
+    clap1.beRepaired(20);
     clap1.takeDamage(7);
-    // clap1.beRepaired(20);
     std::cout << clap1.getDamageP() << std::endl;
     std::cout << clap1.getEnergyP() << std::endl;
     std::cout << clap1.getHitP() << std::endl;

@@ -18,11 +18,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 int	main( void )
 {
-	Point const a(0, 0);
+	Point const a(9, -5);
 	Point const b(0, 9);
 	Point const c(8, 0);
 	Point const p(1.0f, 5.0f);
-	Point const n = a;
+	Point n;
+	n = a;
 
 	bool	res2 = bsp(a, b, c, p);
 

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = second
+NAME = overload
 
 SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
