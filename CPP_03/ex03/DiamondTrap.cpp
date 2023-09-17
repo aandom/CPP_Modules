@@ -60,11 +60,11 @@ DiamondTrap    & DiamondTrap::operator=(DiamondTrap const & src){
 void    DiamondTrap::whoAmI(void) {
 	if (this->_hit == 0)
 		std::cout << "DiamondTrap [" << this->_name
-			<< " ] with a ClapTrap name [" << ClapTrap::_name
-			<< " ] has no hit point."<< std::endl;
+			<< "] with a ClapTrap name [" << ClapTrap::_name
+			<< "] has no hit point, so can't introduce itself."<< std::endl;
 	else
 		std::cout << "Hi I am DiamondTrap [ " << this->_name
-			<< " ] and I have a ClapTrap name [ " << ClapTrap::_name
-			<< " ] ."<< std::endl;
+			<< "] and I have a ClapTrap name [ " << ClapTrap::_name
+			<< "] ."<< std::endl;
 	return ;
 }

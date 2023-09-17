@@ -12,7 +12,7 @@
 
 # include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) {
+ScavTrap::ScavTrap(void) : ClapTrap() {
     this->_hit = SCAVTRAP_DHP;
     this->_energy = SCAVTRAP_DEP;
     this->_damage = SCAVTRAP_DAD;
@@ -56,19 +56,23 @@ ScavTrap    & ScavTrap::operator=(ScavTrap const & src){
 }
 
 void    ScavTrap::attack(std::string & target) {
+    std::string tarname;
+
     if (this->_hit == 0) {
-        std::cout << "ScavTrap " << this->_name << " can not attack: it has no Hit point" << std::endl;
+        std::cout << "ScavTrap [" << this->_name << "] can not attack: it has no Hit point" << std::endl;
         return ;
     }
     if (this->_energy == 0) {
-        std::cout << "ScavTrap " << this->_name << " can not attack: it has no energy to attack" << std::endl;
+        std::cout << "ScavTrap [" << this->_name << "] can not attack: it has no energy to attack" << std::endl;
         return ;
     }
     if (target == this->_name) {
-        target == "itself";
+        tarname = "itself";
     }
+    else
+        tarname = target;
     this->_energy--;
-    std::cout << "ScavTrap " << this->_name << " attacks " << target
+    std::cout << "ScavTrap [" << this->_name << "] attacks " << tarname
         << " that results " << this->_damage << " damage" << std::endl;
 
 }
@@ -76,10 +80,10 @@ void    ScavTrap::attack(std::string & target) {
 
 void    ScavTrap::guardGate(void) {
 	if (this->_hit == 0)
-		std::cout << "ScavTrap "<< this->_name
-			<< "can not be in Gate keeper mode: it has no hit point" << std::endl;
+		std::cout << "ScavTrap ["<< this->_name
+			<< "] can not be in Gate keeper mode: it has no hit point" << std::endl;
 	else
-		std::cout << "ScavTrap " << this->_name
-			<< " is in Gate keeper mode" << std::endl;
+		std::cout << "ScavTrap [" << this->_name
+			<< "] is in Gate keeper mode" << std::endl;
 	return ;
 }

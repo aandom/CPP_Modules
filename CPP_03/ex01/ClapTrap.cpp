@@ -74,46 +74,54 @@ unsigned int    ClapTrap::getDamageP(void) const {
 }
 
 void    ClapTrap::attack(const std::string& target) {
+    std::string tarname;
+
     if (this->_hit == 0) {
-        std::cout << this->_name << " can not attack: it has no Hit point" << std::endl;
+        std::cout << "ClapTrap [" << this->_name << "] can not attack: it has no Hit point" << std::endl;
         return ;
     }
     if (this->_energy == 0) {
-        std::cout << this->_name << " can not attack: it has no energy to attack" << std::endl;
+        std::cout << "ClapTrap [" << this->_name << "] can not attack: it has no energy to attack" << std::endl;
         return ;
     }
     if (target == this->_name) {
-        target == "itself";
+        tarname = "itself";
     }
+    else
+        tarname = target;
     this->_energy--;
-    std::cout << this->_name << " attacks " << target
+    std::cout << "ClapTrap [" << this->_name << "] attacks " << tarname
         << " that results " << this->_damage << " damage" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount) {
     if (this->_hit == 0) {
-        std::cout << this->_name << " can not take anymore damage: it has no hit point so it can't repair"<< std::endl;
+        std::cout << "[" << this->_name << "] can not take anymore damage: it has no hit point so it can't repair"<< std::endl;
+        return ;
+    }
+    if (this->_energy == 0) {
+        std::cout << "[" << this->_name << "] can not take anymore damage: it has no energy so it can't repair" << std::endl;
         return ;
     }
     if ((int)this->_hit - (int) amount <= 0) {
         this->_hit = 0;
-        std::cout << this->_name << " take " << amount << " damage and it is destroyed" << std::endl;
+        std::cout << "[" << this->_name << "] take " << amount << " damage and it is destroyed" << std::endl;
         return ; 
     }
     else {
         this->_hit -= amount;
-        std::cout << this->_name << " take " << amount << " damage " << std::endl;
+        std::cout << "[" << this->_name << "] take " << amount << " damage " << std::endl;
     }
     return ;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount) {
      if (this->_hit == 0) {
-        std::cout << this->_name << " can not repair anymore: it has no hit point"<< std::endl;
+        std::cout << "[" << this->_name << "] can not repair anymore: it has no hit point"<< std::endl;
         return ;
     }
      if (this->_energy == 0) {
-        std::cout << this->_name << " can not repair anymore: it has no energy"<< std::endl;
+        std::cout << "[ " << this->_name << " ] can not repair anymore: it has no energy"<< std::endl;
         return ;
     }
     if (this->_hit + amount > this->_maxhit) {
@@ -121,12 +129,12 @@ void    ClapTrap::beRepaired(unsigned int amount) {
     }
     if (amount == 0) {
         this->_energy--;
-        std::cout << this->_name << " tries to repair while the amount to repair is 0 or it doesn't need any repair" << std::endl;
+        std::cout << "[" << this->_name << "] tries to repair while the amount to repair is 0 or it doesn't need any repair" << std::endl;
         return ;
     }
     this->_energy--;
     this->_hit += amount;
-    std::cout << this->_name << " repairs " << amount << " hit point " << std::endl;
+    std::cout << "[" << this->_name << "] repairs " << amount << " hit point " << std::endl;
     return ;
 }
 

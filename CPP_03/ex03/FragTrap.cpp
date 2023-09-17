@@ -58,8 +58,8 @@ FragTrap    & FragTrap::operator=(FragTrap const & src){
 void    FragTrap::highFivesGuys(void) {
 	if (this->_hit == 0)
 		std::cout << "FragTrap [" << this->_name
-			<< " ] can not high five: it has no hit point."<< std::endl;
+			<< "] can not high five: it has no hit point."<< std::endl;
 	else
-		std::cout << "FragTrap [" << this->_name << " ] is waving for high five" << std::endl;
+		std::cout << "FragTrap [" << this->_name << "] is waving for high five" << std::endl;
 	return ;
 }

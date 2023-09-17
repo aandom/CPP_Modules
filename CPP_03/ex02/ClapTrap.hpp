@@ -16,10 +16,6 @@
 #include <string>
 #include <iostream>
 
-# define CLAPTRAP_DHP 10
-# define CLAPTRAP_DEP 10
-# define CLAPTRAP_DAD 0
-
 class ClapTrap
 {
     public:

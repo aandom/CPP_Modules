@@ -89,9 +89,12 @@ void    ClapTrap::attack(const std::string& target) {
 }
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-    std::cout << "hitpoint = " << this->_hit << std::endl;
     if (this->_hit == 0) {
         std::cout << this->_name << " can not take anymore damage: it has no hit point so it can't repair"<< std::endl;
+        return ;
+    }
+    if (this->_energy == 0) {
+        std::cout << this->_name << " can not take anymore damage: it has no energy so it can't repair" << std::endl;
         return ;
     }
     if ((int)this->_hit - (int) amount <= 0) {
