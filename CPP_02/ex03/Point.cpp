@@ -13,26 +13,31 @@
 #include "Point.hpp"
 
 Point::Point(void) : _x(0), _y(0) {
+    // std::cout << "Point Default constructor called."  << std::endl;
+    return ;
 }
 
 Point::Point( float const x, float const y) : _x(x), _y(y){
+    // std::cout << "Point Parameterized constructor called."  << std::endl;
+    return ;
 }
 
 Point::Point( Point const & src) : _x(src.get_x()), _y(src.get_y()) {
+    // std::cout << "Point copy constructor called."  << std::endl;
+    return ;
 }
 
 Point::~Point (void){
+    // std::cout << "Point Destructor called." << std::endl;
+    return ;
 } 
 
 Point   & Point::operator=(Point const & src) {
-    if (this != &src) {
-        (Fixed) this->_x = src.get_x();
-       ( Fixed) this->_y = src.get_y();
-    }
-    // this = tmp;
+    // std::cout << "Point copy assignment operator overload."  << std::endl;
+    (void)src;
     return (*this);
-    // (void)src;
-    // return (*this);
+    // (Fixed) this->_x = src.get_x();
+    // (Fixed) this->_y = src.get_y();
 }
 
 

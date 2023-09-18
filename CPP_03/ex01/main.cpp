@@ -26,7 +26,7 @@ int	main(void) {
 	clapTrap.takeDamage(SCAVTRAP_DAD);
 	clapTrap.beRepaired(5000);
 	scavTrap.guardGate();
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 4; i++)
 		scavTrap.beRepaired(5000);
 	scavTrap.attack(scavTrapName);
 	scavTrap.guardGate();

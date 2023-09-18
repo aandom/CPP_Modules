@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(void) {
     this->_hit = ClapTrap::defaultHitP;
     this->_energy = ClapTrap::defaultEnergyP;
     this->_damage = ClapTrap::defaultAttackDamage;
-    std::cerr << "ClapTrap default constructor called." << std::endl;
+    std::cout << "ClapTrap default constructor called." << std::endl;
     return ;
 }
 
@@ -25,18 +25,18 @@ ClapTrap::ClapTrap(std::string name) : _name(name) {
     this->_hit = ClapTrap::defaultHitP;
     this->_energy = ClapTrap::defaultEnergyP;
     this->_damage = ClapTrap::defaultAttackDamage;
-    std::cerr << "Parameterized ClapTrap constructor with name ["<< name << "]  called." << std::endl;
+    std::cout << "Parameterized ClapTrap constructor with name ["<< name << "]  called." << std::endl;
     return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src) {
     *this = src;
-    std::cerr << "ClapTrap copy constructor called." << std::endl;
+    std::cout << "ClapTrap copy constructor called." << std::endl;
     return ;
 }
 
 ClapTrap::~ClapTrap(void) {
-    std::cerr << "ClapTrap with name ["<< this->_name << "]  was destroyed." << std::endl;
+    std::cout << "ClapTrap with name ["<< this->_name << "]  was destroyed." << std::endl;
     return ;
 }
 
@@ -68,6 +68,8 @@ unsigned int    ClapTrap::getDamageP(void) const {
 }
 
 void    ClapTrap::attack(const std::string& target) {
+    std::string tarname;
+
     if (this->_hit == 0) {
         std::cout << this->_name << " can not attack: it has no Hit point" << std::endl;
         return ;
@@ -77,16 +79,22 @@ void    ClapTrap::attack(const std::string& target) {
         return ;
     }
     if (target == this->_name) {
-        target == "itself";
+        tarname = "itself";
     }
+    else
+        tarname = target;
     this->_energy--;
-    std::cout << this->_name << " attacks " << target
+    std::cout << this->_name << " attacks " << tarname
         << " that results " << this->_damage << " damage" << std::endl;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount) {
     if (this->_hit == 0) {
         std::cout << this->_name << " can not take anymore damage: it has no hit point so it can't repair"<< std::endl;
+        return ;
+    }
+    if (this->_energy == 0) {
+        std::cout << this->_name << " can not take anymore damage: it has no energy so it can't repair" << std::endl;
         return ;
     }
     if ((int)this->_hit - (int) amount <= 0) {

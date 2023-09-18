@@ -27,6 +27,18 @@ class Fixed
         ~Fixed( void );
         Fixed & operator=( Fixed const &src );
 
+        int     getRawBits( void ) const;
+        void    setRawBits( int const raw );
+        float   toFloat( void ) const;
+        int     toInt( void ) const;
+
+        bool	operator>( Fixed const & src ) const;
+		bool	operator<( Fixed const & src ) const;
+		bool	operator>=( Fixed const & src ) const;
+		bool	operator<=( Fixed const & src ) const;
+		bool	operator==( Fixed const & src ) const;
+		bool	operator!=( Fixed const & src ) const;
+
 		Fixed	operator+( Fixed const & src ) const;
 		Fixed	operator-( Fixed const & src ) const;
 		Fixed	operator*( Fixed const & src ) const;
@@ -36,18 +48,6 @@ class Fixed
 		Fixed	operator++( int	);
 		Fixed &	operator--( void );
 		Fixed	operator--( int );
-
-        bool	operator>( Fixed const & src ) const;
-		bool	operator<( Fixed const & src ) const;
-		bool	operator>=( Fixed const & src ) const;
-		bool	operator<=( Fixed const & src ) const;
-		bool	operator==( Fixed const & src ) const;
-		bool	operator!=( Fixed const & src ) const;
-
-        int     getRawBits( void ) const;
-        void    setRawBits( int const raw );
-        float   toFloat( void ) const;
-        int     toInt( void ) const;
 
 		static Fixed &			min( Fixed & srcOnLeft, Fixed & srcOnRight );
 		static Fixed &			max( Fixed & srcOnLeft, Fixed & srcOnRight );

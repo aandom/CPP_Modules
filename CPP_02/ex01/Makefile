@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = second
+NAME = fixed_point
 
 SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
