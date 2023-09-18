@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/14 07:23:14 by aandom            #+#    #+#             */
-/*   Updated: 2023/09/14 07:23:14 by aandom           ###   ########.fr       */
+/*   Created: 2023/09/14 13:43:52 by aandom            #+#    #+#             */
+/*   Updated: 2023/09/14 13:43:52 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-# include <iostream>
-# include <string>
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-class Animal
+class Cat : public Animal
 {
     public:
-        Animal(void);
-        Animal (std::string type);
-        Animal (Animal const & src);
-        ~Animal();
+        Cat(void);
+        Cat(Cat const & src);
+        ~Cat(void);
 
-        Animal & operator=(Animal const & src);
-        std::string const &	getType(void) const;
-
-        void    makeSound();
-
+        Cat & operator=(Cat const & src);
         
-    protected:
-        std::string _type;
+        void    makeSound(void) const;
+        Brain * getBrain(void) const;
+
+    private:
+        Brain * _brain;
 };
 
 # endif

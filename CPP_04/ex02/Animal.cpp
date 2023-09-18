@@ -17,10 +17,10 @@ Animal::Animal(void) : _type("Uknown_Animal") {
     return ;
 }
 
-Animal::Animal(std::string const type) : _type(type) {
-    std::cout << "Animal parameterized constructor called." << std::endl;
-    return ;
-}
+// Animal::Animal(std::string const type) : _type(type) {
+//     std::cout << "Animal parameterized constructor called." << std::endl;
+//     return ;
+// }
 
 Animal::Animal(Animal const & src) {
     *this = src;
@@ -29,7 +29,7 @@ Animal::Animal(Animal const & src) {
 }
 
 Animal::~Animal(void) {
-    std::cout << "Animal default Destructor called." << std::endl;
+    std::cout << "Animal Destructor called." << std::endl;
     return ;
 }
 
@@ -41,11 +41,11 @@ Animal  & Animal::operator=(Animal const & src) {
     return(*this);
 }
 
-std::string const &	Animal::getType(void) const {
-	return (this->_type);
-}
+// std::string const &	Animal::getType(void) const {
+// 	return (this->_type);
+// }
 
-void    Animal::makeSound() {
-	std::cout << this->_type << ": * is Making sound *" << std::endl;
+void    Animal::makeSound(void) const {
+	std::cout << this->_type << " : * is Making sound *" << std::endl;
 	return ;
 }

@@ -25,8 +25,14 @@ Point::~Point (void){
 } 
 
 Point   & Point::operator=(Point const & src) {
-    (void)src;
+    if (this != &src) {
+        (Fixed) this->_x = src.get_x();
+       ( Fixed) this->_y = src.get_y();
+    }
+    // this = tmp;
     return (*this);
+    // (void)src;
+    // return (*this);
 }
 
 
