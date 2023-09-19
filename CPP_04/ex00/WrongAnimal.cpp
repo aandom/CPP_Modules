@@ -12,7 +12,7 @@
 
 # include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void) : _type("Uknown_Animal") {
+WrongAnimal::WrongAnimal(void) : _type("Uknown_WrongAnimal") {
     std::cout << "WrongAnimal default constructor called." << std::endl;
     return ;
 }
@@ -46,6 +46,6 @@ std::string const &	WrongAnimal::getType(void) const {
 }
 
 void    WrongAnimal::makeSound(void) const {
-	std::cout << this->_type << ": * is Making default sound*" << std::endl;
+	std::cout << this->_type << ": * is Making WrongAnimal's default sound*" << std::endl;
 	return ;
 }

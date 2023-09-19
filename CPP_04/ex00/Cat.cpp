@@ -13,19 +13,19 @@
 #include "Cat.hpp"
 
 Cat::Cat(void) : Animal("Cat") {
-    std::cout << "Cat default constructor called." << std::endl;
+    std::cout << BLUE << "Cat default constructor called." << RESET << std::endl;
     this->_type = "Cat";
     return ;
 }
 
 Cat::Cat(Cat const & src) : Animal() {
-    std::cout << "Cat Copy constructor called." << std::endl;
+    std::cout << BLUE << "Cat Copy constructor called." << RESET << std::endl;
     *this = src;
     return ;
 }
 
 Cat::~Cat(void) {
-    std::cout << "Cat Destructor called." << std::endl;
+    std::cout << BLUE << "Cat Destructor called." << RESET << std::endl;
     return ;
 }
 
@@ -33,12 +33,12 @@ Cat & Cat::operator=(Cat const & src) {
     if (this != &src) {
         this->_type = src._type;
     }
-    std::cout << "Cat assignment overload operator called." << std::endl;
+    std::cout << BLUE << "Cat assignment overload operator called." << RESET << std::endl;
     return (*this);
 }
 
 void    Cat::makeSound(void) const {
-    std::cout << this->_type << " : is making sound : Meoww Meoww...." << std::endl; 
+    std::cout << BLUE << this->_type << " : is making sound : Meoww Meoww...." << RESET << std::endl; 
     return ;
 }
 

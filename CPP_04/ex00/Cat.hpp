@@ -15,6 +15,9 @@
 
 # include "Animal.hpp"
 
+#define RESET "\e[0m"
+#define BLUE "\e[34m"
+
 class Cat : public Animal
 {
     public:

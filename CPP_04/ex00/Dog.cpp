@@ -13,19 +13,19 @@
 #include "Dog.hpp"
 
 Dog::Dog(void) : Animal("Dog") {
-    std::cout << "Dog default constructor called." << std::endl;
+    std::cout << GREEN << "Dog default constructor called." << RESET << std::endl;
     this->_type = "Dog";
     return ;
 }
 
 Dog::Dog(Dog const & src) : Animal() {
-    std::cout << "Dog Copy constructor called." << std::endl;
+    std::cout << GREEN << "Dog Copy constructor called." << RESET << std::endl;
     *this = src;
     return ;
 }
 
 Dog::~Dog(void) {
-    std::cout << "Dog Destructor called." << std::endl;
+    std::cout << GREEN << "Dog Destructor called." << RESET << std::endl;
     return ;
 }
 
@@ -33,12 +33,12 @@ Dog & Dog::operator=(Dog const & src) {
     if (this != &src) {
         this->_type = src._type;
     }
-    std::cout << "Dog assignment overload operator called." << std::endl;
+    std::cout << GREEN << "Dog assignment overload operator called." << RESET << std::endl;
     return (*this);
 }
 
 void    Dog::makeSound(void) const {
-    std::cout << this->_type << " : is making sound : Woof Woof......" << std::endl; 
+    std::cout << GREEN << this->_type << " : is making sound : Woof Woof......" << RESET << std::endl; 
     return ;
 }
 

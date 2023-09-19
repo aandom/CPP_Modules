@@ -16,6 +16,9 @@
 # include <iostream>
 # include <string>
 
+#define RESET "\e[0m"
+#define YELLOW "\e[33m"
+
 class Animal
 {
     public:

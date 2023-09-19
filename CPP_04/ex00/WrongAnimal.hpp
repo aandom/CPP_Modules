@@ -16,6 +16,10 @@
 # include <iostream>
 # include <string>
 
+#define RESET "\e[0m"
+#define CYAN "\e[36m"
+
+
 class WrongAnimal
 {
     public:
