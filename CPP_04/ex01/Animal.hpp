@@ -16,12 +16,15 @@
 # include <iostream>
 # include <string>
 
+#define RESET "\e[0m"
+#define YELLOW "\e[33m"
+
 class Animal
 {
     public:
         Animal(void);
-        Animal (std::string type);
-        Animal (Animal const & src);
+        Animal(std::string const & type);
+        Animal(Animal const & src);
         virtual ~Animal();
 
         Animal & operator=(Animal const & src);

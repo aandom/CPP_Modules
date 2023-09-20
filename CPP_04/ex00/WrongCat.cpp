@@ -38,7 +38,7 @@ WrongCat & WrongCat::operator=(WrongCat const & src) {
 }
 
 void    WrongCat::makeSound(void) const {
-    std::cout << this->_type << "is making sound : Meow Meow...." << std::endl; 
+    std::cout << this->_type << " : is making sound : Meow Meow...." << std::endl; 
     return ;
 }
 

@@ -13,23 +13,23 @@
 # include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal(void) : _type("Uknown_WrongAnimal") {
-    std::cout << "WrongAnimal default constructor called." << std::endl;
+    std::cout << CYAN << "WrongAnimal default constructor called." << RESET << std::endl;
     return ;
 }
 
 WrongAnimal::WrongAnimal(std::string const type) : _type(type) {
-    std::cout << "WrongAnimal parameterized constructor called." << std::endl;
+    std::cout << CYAN << "WrongAnimal parameterized constructor called." << RESET << std::endl;
     return ;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const & src) {
     *this = src;
-    std::cout << "WrongAnimal copy constructor called." << std::endl;
+    std::cout << CYAN << "WrongAnimal copy constructor called." << RESET << std::endl;
     return ;
 }
 
 WrongAnimal::~WrongAnimal(void) {
-    std::cout << "WrongAnimal default Destructor called." << std::endl;
+    std::cout << CYAN << "WrongAnimal default Destructor called." << RESET << std::endl;
     return ;
 }
 
@@ -37,7 +37,7 @@ WrongAnimal  & WrongAnimal::operator=(WrongAnimal const & src) {
     if ( this != &src) {
         this->_type = src._type;
     }
-    std::cout << "WrongAnimal assignment overload operator called." << std::endl;
+    std::cout << CYAN << "WrongAnimal assignment overload operator called." << RESET << std::endl;
     return(*this);
 }
 
@@ -46,6 +46,6 @@ std::string const &	WrongAnimal::getType(void) const {
 }
 
 void    WrongAnimal::makeSound(void) const {
-	std::cout << this->_type << ": * is Making WrongAnimal's default sound*" << std::endl;
+	std::cout << CYAN << this->_type << ": * is Making WrongAnimal's default sound*" << RESET << std::endl;
 	return ;
 }
