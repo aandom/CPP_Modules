@@ -25,7 +25,7 @@ Cat::Cat(Cat const & src) : Animal(), _brain(NULL) {
 }
 
 Cat::~Cat(void) {
-    std::cout << BLUE << "Cat Destructor called." << RESET << std::endl;
+    std::cout << BLUE <<"Cat Destructor called" << RESET << std::endl;
     delete this->_brain;
     return ;
 }
@@ -38,6 +38,7 @@ Cat & Cat::operator=(Cat const & src) {
             delete this->_brain;
         }
         this->_brain = new Brain(*src._brain);
+        // this->_brain = src.getBrain();
     }
     return (*this);
 }

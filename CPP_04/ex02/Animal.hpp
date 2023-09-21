@@ -16,6 +16,10 @@
 # include <iostream>
 # include <string>
 
+#define RESET "\e[0m"
+#define YELLOW "\e[33m"
+
+
 class Animal
 {
     public:
@@ -25,9 +29,9 @@ class Animal
         virtual ~Animal();
 
         Animal & operator=(Animal const & src);
-        // std::string const &	getType(void) const;
+        std::string const &	getType(void) const;
 
-        virtual void    makeSound(void) const;
+        virtual void    makeSound(void) const = 0;
 
         
     protected:

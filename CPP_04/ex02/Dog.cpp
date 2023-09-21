@@ -13,25 +13,25 @@
 #include "Dog.hpp"
 
 Dog::Dog(void) : Animal(), _brain(new Brain()) {
-    std::cout << "Dog default constructor called." << std::endl;
+    std::cout << GREEN << "Dog default constructor called." << RESET << std::endl;
     this->_type = "Dog";
     return ;
 }
 
 Dog::Dog(Dog const & src) : Animal(), _brain(NULL) {
-    std::cout << "Dog Copy constructor called." << std::endl;
+    std::cout << GREEN << "Dog Copy constructor called." << RESET << std::endl;
     *this = src;
     return ;
 }
 
 Dog::~Dog(void) {
-    std::cout << "Dog Destructor called." << std::endl;
+    std::cout << GREEN << "Dog Destructor called." << RESET << std::endl;
     delete this->_brain;
     return ;
 }
 
 Dog & Dog::operator=(Dog const & src) {
-    std::cout << "Dog assignment overload operator called." << std::endl;
+    std::cout << GREEN << "Dog assignment overload operator called." << RESET << std::endl;
     if (this != &src) {
         this->_type = src._type;
         if (this->_brain != NULL) {
@@ -43,11 +43,12 @@ Dog & Dog::operator=(Dog const & src) {
 }
 
 void    Dog::makeSound(void) const {
-    std::cout << this->_type << " : is making sound : Woof Woof......" << std::endl; 
+    std::cout << GREEN << this->_type << " : is making sound : Woof Woof......" << RESET << std::endl;
     return ;
 }
 
 Brain * Dog::getBrain(void) const {
     return (this->_brain);
 }
+
 
