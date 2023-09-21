@@ -40,6 +40,8 @@ AMateria & AMateria::operator=(AMateria const & src) {
 	return (*this);
 }
 
+// Amateria::clone;
+
 // Amateria::use;
 void        AMateria::use(ICharacter & target) {
 	std::cout << "* Default materia used on " << target.getName() << " *" << std::endl;

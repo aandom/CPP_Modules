@@ -16,9 +16,6 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-#define RESET "\e[0m"
-#define GREEN "\e[32m"
-
 class Dog : public Animal
 {
     public:
