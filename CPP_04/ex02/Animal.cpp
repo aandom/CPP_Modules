@@ -13,23 +13,23 @@
 # include "Animal.hpp"
 
 Animal::Animal(void) : _type("Uknown_Animal") {
-    std::cout << "Animal default constructor called." << std::endl;
+    std::cout << YELLOW << "Animal default constructor called." << RESET << std::endl;
     return ;
 }
 
-// Animal::Animal(std::string const type) : _type(type) {
-//     std::cout << "Animal parameterized constructor called." << std::endl;
+// Animal::Animal(std::string const & type) : _type(type) {
+//     std::cout << YELLOW << "Animal parameterized constructor called." << RESET << std::endl;
 //     return ;
 // }
 
 Animal::Animal(Animal const & src) {
     *this = src;
-    std::cout << "Animal copy constructor called." << std::endl;
+    std::cout << YELLOW << "Animal copy constructor called." << RESET << std::endl;
     return ;
 }
 
 Animal::~Animal(void) {
-    std::cout << "Animal Destructor called." << std::endl;
+    std::cout << YELLOW << "Animal default Destructor called." << RESET << std::endl;
     return ;
 }
 
@@ -37,15 +37,15 @@ Animal  & Animal::operator=(Animal const & src) {
     if ( this != &src) {
         this->_type = src._type;
     }
-    std::cout << "Animal assignment overload operator called." << std::endl;
+    std::cout << YELLOW << "Animal assignment overload operator called." << RESET << std::endl;
     return(*this);
 }
 
-// std::string const &	Animal::getType(void) const {
-// 	return (this->_type);
-// }
+std::string const &	Animal::getType(void) const {
+	return (this->_type);
+}
 
 void    Animal::makeSound(void) const {
-	std::cout << this->_type << " : * is Making sound *" << std::endl;
+	std::cout << YELLOW << this->_type << " : * is Making sound *" << RESET << std::endl;
 	return ;
 }

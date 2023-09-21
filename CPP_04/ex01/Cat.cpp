@@ -12,7 +12,7 @@
 
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Dog"), _brain(new Brain()) {
+Cat::Cat(void) : Animal("Cat"), _brain(new Brain()) {
     std::cout << BLUE << "Cat default constructor called." << RESET << std::endl;
     this->_type = "Cat";
     return ;
@@ -25,7 +25,7 @@ Cat::Cat(Cat const & src) : Animal(), _brain(NULL) {
 }
 
 Cat::~Cat(void) {
-    std::cout << BLUE << "Cat Destructor called." << RESET << std::endl;
+    std::cout << BLUE <<"Cat Destructor called" << RESET << std::endl;
     delete this->_brain;
     return ;
 }
@@ -38,6 +38,7 @@ Cat & Cat::operator=(Cat const & src) {
             delete this->_brain;
         }
         this->_brain = new Brain(*src._brain);
+        // this->_brain = src.getBrain();
     }
     return (*this);
 }

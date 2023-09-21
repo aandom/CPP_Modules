@@ -40,7 +40,7 @@ Brain & Brain::operator=(Brain const & src) {
 
 
 std::string const & Brain::getIdea(int idx) const {
-    if (idx < 0 && idx >= 100) {
+    if (idx < 0 || idx >= 100) {
         std::cout << "Invalid Index to Access" << std::endl;
         return (this->ideas[0]);
     }
@@ -48,7 +48,7 @@ std::string const & Brain::getIdea(int idx) const {
 }
 
 void    Brain::setIdea(int idx, std::string const & idea) {
-     if (idx < 0 && idx >= 100) {
+     if (idx < 0 || idx >= 100) {
         std::cout << "Invalid Index to Insert" << std::endl;
         return ;
      }
