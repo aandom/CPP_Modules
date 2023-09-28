@@ -73,8 +73,8 @@ AMateria *	MateriaSource::createMateria(std::string const & type)
 		if (this->_matsource[i]
 			&& this->_matsource[i]->getType() == type)
 		{
-			std::cout << "MateriaSource creating " << type
-				<< " materia."  << std::endl;
+			std::cout << "MateriaSource creating [" << type
+				<< "] materia."  << std::endl;
 			return (this->_matsource[i]->clone());
 		}
 	}
@@ -105,12 +105,12 @@ void	MateriaSource::_removeMatSource(void)
 
 void	MateriaSource::dispmateriasource(void)
 {
-	std::cout << "MateriaSource knows the following recipes:" << std::endl;
+	std::cout << "|---- MateriaSource knows the following types of Materias: ----|" << std::endl;
 	for (int i = 0; i < this->_matsize; i++)
 	{
 		std::cout << "\t[" << i << "] ";
 		if (this->_matsource[i] == NULL)
-			std::cout << "Empty slot.";
+			std::cout << "NULL, no data found";
 		else
 			std::cout << this->_matsource[i]->getType() << " materia.";
 		std::cout << std::endl;

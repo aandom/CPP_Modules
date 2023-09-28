@@ -45,7 +45,7 @@ std::string const &	Animal::getType(void) const {
 	return (this->_type);
 }
 
-void    Animal::makeSound(void) const {
-	std::cout << YELLOW << this->_type << " : * is Making sound *" << RESET << std::endl;
-	return ;
-}
+// void    Animal::makeSound(void) const {
+// 	std::cout << YELLOW << this->_type << " : * is Making sound *" << RESET << std::endl;
+// 	return ;
+// }

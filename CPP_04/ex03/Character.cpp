@@ -18,7 +18,7 @@ Character::Character(void) : _name("default") {
     return ;
 }
 
-Character::Character(Character const & src) {
+Character::Character(Character & src) {
     std::cout << "Character copy Constructor called." << std::endl;
     this->_initInv();
     *this = src;
@@ -37,7 +37,7 @@ Character::~Character() {
     return ;
 }
 
-Character   & Character::operator=(Character const & src) {
+Character   & Character::operator=(Character & src) {
 
 	std::cout << "Character assignment operator overload called." << std::endl;
 	this->_name = src._name;
@@ -47,6 +47,7 @@ Character   & Character::operator=(Character const & src) {
 		if (src._inv[i] != NULL)
 			this->_inv[i] = src._inv[i]->clone();
 	}
+
 	return (*this);
 }
 
@@ -69,8 +70,8 @@ void    Character::equip(AMateria* m) {
         {
             this->_inv[i] = m;
             std::cout << this->_name << " equipped with " << m->getType()
-                      << "materia and its index is " << i << std::endl;
-            return ;    
+                      << " materia and its index is " << i << std::endl;
+            return ;
         }
     }
     std::cout << this->_name << " can not equip anymore : no space left for another materia" << std::endl;
@@ -86,7 +87,7 @@ void    Character::unequip(int idx) {
 
     if (this->_inv[idx] == NULL) {
      
-        std::cout << this->_name << " : can not unequip :No Materia found at given index "
+        std::cout << this->_name << " : can not unequip :No Materia found at the given index "
                  << idx << std::endl;
         return ;    
     }
@@ -101,7 +102,7 @@ void	Character::use(int idx, ICharacter & target)
 	{
 		std::cout << this->_name << ": "
 			"Can't use item at inventory index " << idx
-			<< ". It's not a valid index!" << std::endl; 
+			<< ". the given Index is invalid!" << std::endl; 
 		return ;
 	}
 	if (this->_inv[idx] != NULL)
@@ -111,7 +112,7 @@ void	Character::use(int idx, ICharacter & target)
 	}
 	else
 		std::cout << this->_name
-			<< ": Can not use item in inventory at index "
+			<< ": Can not use item from inventory at index "
 			<< idx << " : no item at the given index" << std::endl;
 	return ;
 }
@@ -121,7 +122,7 @@ void	Character::dispInv(void) const {
 	for (size_t i = 0; i < this->_invsize; i++) {
 		std::cout << "\t[" << i << "] ";
 		if (this->_inv[i] == NULL)
-			std::cout << "Empty slot.";
+			std::cout << "NULL, empty slot...";
 		else
 			std::cout << this->_inv[i]->getType() << " materia.";
 		std::cout << std::endl;
@@ -131,7 +132,7 @@ void	Character::dispInv(void) const {
 
 void	Character::_initInv(void)
 {
-	for (size_t i = 0; i < this->_invsize; i++)
+	for (int i = 0; i < this->_invsize; i++)
 		this->_inv[i] = NULL;
 	return ;
 }

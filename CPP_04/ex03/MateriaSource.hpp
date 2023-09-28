@@ -24,8 +24,11 @@ class MateriaSource : public IMateriaSource
 		~MateriaSource(void);
 		MateriaSource & operator=(MateriaSource const & src);
 	
+		//IMateriaSource class implementation
 		void		learnMateria(AMateria * m);
 		AMateria *	createMateria(std::string const & type);
+
+		//mem_functions
 		void		dispmateriasource(void);
 
 	private:

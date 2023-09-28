@@ -20,16 +20,18 @@ class Character : public ICharacter
 {
 	public:
 		Character(void);
-		Character(Character const & src);
+		Character(Character  & src);
 		Character(std::string const & name);
 		~Character();
-		Character & operator=(Character const & src);
-	
+		Character & operator=(Character & src);
+
+		// class ICharacter member functions 
 		std::string const & getName() const;
 		void				equip(AMateria* m);
 		void				unequip(int idx);
 		void				use(int idx, ICharacter& target);
 
+		// new mem functions
 		void				setName(std::string const & name);
 		void				dispInv() const;
 
