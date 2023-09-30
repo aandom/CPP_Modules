@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 19:07:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/09/30 17:08:52 by aandom           ###   ########.fr       */
+/*   Updated: 2023/09/30 20:21:08 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -29,14 +29,14 @@
 class Bureaucrat;
 
 
-class Form
+class AForm
 {
     public:
-        Form(const std::string& name, int gToSign, int gToExec);
-        Form(const Form& src);
-        ~Form();
+        AForm(const std::string& name, int gToSign, int gToExec);
+        AForm(const AForm& src);
+        virtual ~AForm();
 
-        Form&   operator=(const Form& src);
+        AForm&   operator=(const AForm& src);
 
         std::string getName() const;
         bool        getSigned() const;
@@ -44,6 +44,7 @@ class Form
         int         getGToExec() const;
 
         void        beSigned(const Bureaucrat & src);
+        void        execute(Bureaucrat const & executor) const;
 
         class GradeTooHighException : public std::exception {
             public:
@@ -55,13 +56,13 @@ class Form
          };
         
     private:
-        Form();
+        AForm();
         std::string const _fname;
         bool              _signed;
         int         const _execgrade;
         int         const _signgrade;
 };
 
-std::ostream &	operator<<(std::ostream & out, Form const & src);
+std::ostream &	operator<<(std::ostream & out, AForm const & src);
 
 # endif

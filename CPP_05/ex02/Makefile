@@ -12,7 +12,7 @@
 
 NAME = form
 
-SRC = Bureaucrat.cpp main.cpp Form.cpp
+SRC = Bureaucrat.cpp main.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++ -g3
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
