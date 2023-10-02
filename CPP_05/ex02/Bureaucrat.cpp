@@ -74,9 +74,23 @@ void    Bureaucrat::signForm(Form  & form) {
                   << " is less than the minimum grade, "  << form.getGToSign() 
                   << " required to sign "<< form.getName() << RESET <<  std::endl;
         // std::cerr << e.what() << '\n';
+    }      
+}
+
+void    Bureaucrat::executeForm(Form const & form) {
+    try
+    {
+        form.execute(*this);
+        std::cout << this->_name <<  " signed " << form.getName() << std::endl;
     }
-    
-        
+    catch(Form::GradeTooLowException &e)
+    {
+        std::cerr << YELLOW << this->_name <<  " couldn’t sign " << form.getName()
+                  << " because his/her grade, " << this->getGrade()
+                  << " is less than the minimum grade, "  << form.getGToSign() 
+                  << " required to sign "<< form.getName() << RESET <<  std::endl;
+        // std::cerr << e.what() << '\n';
+    }      
 }
 
 const char *	Bureaucrat::GradeTooHighException::what(void) const throw()

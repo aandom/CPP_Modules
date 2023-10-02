@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 19:07:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/09/30 20:21:08 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/03 01:54:57 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@
 class Bureaucrat;
 
 
-class AForm
+class Form
 {
     public:
-        AForm(const std::string& name, int gToSign, int gToExec);
-        AForm(const AForm& src);
-        virtual ~AForm();
+        Form(const std::string& name, int gToSign, int gToExec);
+        Form(const Form& src);
+        virtual ~Form();
 
-        AForm&   operator=(const AForm& src);
+        Form&   operator=(const Form& src);
 
         std::string getName() const;
         bool        getSigned() const;
@@ -44,7 +44,7 @@ class AForm
         int         getGToExec() const;
 
         void        beSigned(const Bureaucrat & src);
-        void        execute(Bureaucrat const & executor) const;
+        virtual void        execute(Bureaucrat const & executor) const = 0;
 
         class GradeTooHighException : public std::exception {
             public:
@@ -54,15 +54,19 @@ class AForm
             public:
                 virtual const char* what() const throw();
          };
-        
+        class FormNotSignedException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+         };
+         
     private:
-        AForm();
+        Form();
         std::string const _fname;
         bool              _signed;
         int         const _execgrade;
         int         const _signgrade;
 };
 
-std::ostream &	operator<<(std::ostream & out, AForm const & src);
+std::ostream &	operator<<(std::ostream & out, Form const & src);
 
 # endif
