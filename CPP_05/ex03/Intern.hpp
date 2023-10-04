@@ -6,14 +6,14 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:50:13 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/04 07:17:49 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/04 10:46:11 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-# include "Form.hpp";
+# include "AForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "RobotomyRequestForm.hpp"
 # include "ShrubberyCreationForm.hpp"
@@ -28,7 +28,7 @@ class Intern
         Intern & operator=(const Intern & src);
         
         
-        Form & makeForm(std::string name, std::string target);
+        Form * makeForm(std::string name, std::string target);
 
         class InvalidFormName : public std::exception {
             public:

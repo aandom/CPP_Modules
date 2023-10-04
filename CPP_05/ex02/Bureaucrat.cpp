@@ -85,7 +85,7 @@ void    Bureaucrat::executeForm(Form const & form) {
     catch (Form::FormNotSignedException &e) {
         std::cerr << YELLOW << this->_name <<  " couldn’t execute " << form.getName()
                   << " because the form "<< form.getName()
-                  << " is not signed yet! "RESET <<  std::endl;
+                  << " is not signed yet! " RESET <<  std::endl;
         // std::cerr << e.what() << '\n';
     }
     catch(Form::GradeTooLowException &e) {

@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:52:41 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/04 07:18:24 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/04 10:47:05 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@ Intern::Intern() {
 }
 
 Intern::Intern(const Intern & src){
+    (void) src;
+}
+
+Intern::~Intern(){
 }
 
 Intern & Intern::operator=(const Intern & src) {
     (void) src;
     return (*this);
 }
+
 
 Form *    createPardonForm( std::string const target) {
     return (new PresidentialPardonForm(target));
@@ -39,7 +44,7 @@ const char *	Intern::InvalidFormName::what(void) const throw()
 }
 
 
-Form    & Intern::makeForm(std::string name, std::string target) {
+Form    * Intern::makeForm(std::string name, std::string target) {
 
     t_forms myforms[3] = {
         {"robotomy request", createRequestForm},

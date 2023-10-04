@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 19:07:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/03 14:42:31 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/04 11:26:41 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include "Bureaucrat.hpp"
 # include <fstream>
+#include <cstdlib>
 
 #define RESET "\e[0m"
 #define	DEFAULT "\e[0m"
