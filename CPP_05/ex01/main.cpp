@@ -24,13 +24,13 @@
 
 void	trycreateobject(std::string name, int gradeToSign, int gradeToExecute)
 {
-	std::cout << std::endl << "-- Creating form named [\""
-		<< name << "\"] with grade to sign " << gradeToSign
-		<< " and grade to execute " << gradeToExecute << ":" << std::endl;
+	std::cout << std::endl << "-- Creating form with -  name [\""
+		<< name << "\"], grade to sign " << gradeToSign
+		<< " , grade to execute " << gradeToExecute << ":" << std::endl;
 	try
 	{
 		Form	form(name, gradeToSign, gradeToExecute);
-		std::cout << form << " successfully created." << std::endl;
+		std::cout << form << "\n successfully created." << std::endl;
 		return ;
 	}
 	catch(std::exception const & e)
@@ -42,19 +42,20 @@ void	trycreateobject(std::string name, int gradeToSign, int gradeToExecute)
 
 int	main(void)
 {
-	std::cout << std::endl << "\t---- TEST FORM ATTRIBUTE CONSTRUCTOR ----" << std::endl;
+	std::cout << std::endl << "\t---- TEST FORM CONSTRUCTOR ----" << std::endl;
 	trycreateobject("Simple Form", 42, 42);
 	trycreateobject("Signable/Executable Form", 150, 1);
 	trycreateobject("Unsignable Form", 151, 1);
 	trycreateobject("Unexecutable Form", 1, 0);
 	trycreateobject("Unexecutable Form", -10, 140);
+	std::cout << "\n\n" << std::endl;
 
 	{
 		std::cout << std::endl << "\t---- TEST FORM COPY CONSTRUCTOR ----" << std::endl;
 		Form form("FormXYZ", 42, 42);
 		std::cout << "Original Form \n \t" << form << std::endl;
 		Form copiedform(form);
-		std::cout << "copied Form \n \t" << copiedform << std::endl;
+		std::cout << "copied Form \n \t" << copiedform << "\n\n" << std::endl;
 	}
 	{
 		std::cout << std::endl << "\t---- TEST FORM ASSIGNMENT OPERATOR ----" << std::endl;
@@ -74,10 +75,10 @@ int	main(void)
 		form1 = form2;
 		std::cout << form1.getName() << " = " << form2.getName() << "\n"
 			"\t" << form1 << "\n"
-			"\t" << form2 << std::endl;
+			"\t" << form2 <<"\n\n" <<std::endl;
 	}
 	{
-		std::cout << std::endl << "\t---- TEST FOR SIGNING ----" << std::endl;
+		std::cout << std::endl << "\t---- TEST FORM SIGNING ----" << std::endl;
 		Bureaucrat	b1("Nicholas", 150);
 		Bureaucrat	b2("Sam", 42);
 		Bureaucrat	b3("Bob", 1);

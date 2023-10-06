@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 04:57:59 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/03 15:28:50 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:52:20 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
     public:
         ShrubberyCreationForm(const ShrubberyCreationForm & src);

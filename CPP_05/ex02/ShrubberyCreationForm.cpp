@@ -6,17 +6,17 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 04:57:23 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/03 17:50:20 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 12:00:22 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string & target) : Form("ShrubberyCreationForm", 145, 137),
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string & target) : AForm("ShrubberyCreationForm", 145, 137),
                                                                              _target(target) {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm & src) : Form(src),
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm & src) : AForm(src),
                                                                              _target(src._target) {    
 }
 
@@ -61,8 +61,6 @@ void    ShrubberyCreationForm::undertakeExecution() const {
         ofs.close();
     }
 }
-
-
 
 
 std::string const  ShrubberyCreationForm::_asciiTree = 

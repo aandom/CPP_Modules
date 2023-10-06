@@ -27,7 +27,7 @@
 #define PURPLE "\e[35m"
 #define CYAN "\e[36m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -41,8 +41,8 @@ class Bureaucrat
         std::string  getName() const;
         int               getGrade() const;
 
-        void        signForm(Form  & form);
-        void        executeForm(Form const & form);
+        void        signForm(AForm  & form);
+        void        executeForm(AForm const & form);
 
 
         void    incrementGrade();

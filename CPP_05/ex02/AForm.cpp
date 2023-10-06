@@ -12,79 +12,86 @@
 
 # include "AForm.hpp"
 
-Form::Form( const std::string& name, int gToSign, int gToExec) : _fname (name), _signed(false), _execgrade(gToExec) ,_signgrade(gToSign) {
+AForm::AForm( const std::string& name, int gToSign, int gToExec) : _fname (name), _signed(false), _execgrade(gToExec) ,_signgrade(gToSign) {
 	if (gToSign < 1 || gToExec < 1 )
-		throw (Form::GradeTooHighException());
+		throw (AForm::GradeTooHighException());
 	if (gToSign > 150 || gToExec > 150)
-		throw (Form::GradeTooLowException());
+		throw (AForm::GradeTooLowException());
 	return ;
 }
 
-Form::Form( const Form & src) : _fname(src._fname), 
+AForm::AForm( const AForm & src) : _fname(src._fname), 
                                 _signed(false),
                                 _execgrade(src._execgrade),
                                 _signgrade(src._signgrade) {
 }
 
-Form::~Form() {}
+AForm::~AForm() {}
 
-Form    & Form::operator=( const Form & src) {
+AForm    & AForm::operator=( const AForm & src) {
     if (this != &src) {
         this->_signed = src.getSigned();
     }
     return (*this);
 }
 
-std::string Form::getName() const {
+std::string AForm::getName() const {
     return this->_fname;
 }
 
-bool   Form::getSigned() const {
+bool   AForm::getSigned() const {
     return this->_signed;
 }
 
-int   Form::getGToSign() const {
+int   AForm::getGToSign() const {
     return this->_signgrade;
 }
 
-int   Form::getGToExec() const {
+int   AForm::getGToExec() const {
     return this->_execgrade;
 }
 
-void    Form::beSigned(const Bureaucrat& src) {
+void    AForm::beSigned(const Bureaucrat& src) {
     if ( src.getGrade() > this->_signgrade )
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
+    if (this->getSigned())
+        throw AForm::FormIsAlreadySignedException();
     this->_signed = true;
 }
 
-void    Form::execute(Bureaucrat const & executor) const {
+void    AForm::execute(Bureaucrat const & executor) const {
 
     if (!this->getSigned()) {
-        throw Form::FormNotSignedException();
+        throw AForm::FormNotSignedException();
     }
     if (executor.getGrade() > this->getGToExec()) {
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     }
     this->undertakeExecution();
 }
 
 
-const char *	Form::GradeTooHighException::what(void) const throw()
+const char *	AForm::GradeTooHighException::what(void) const throw()
 {
 	return ( YELLOW "Error: Form grade too High." RESET);	
 }
 
-const char *	Form::GradeTooLowException::what(void) const throw()
+const char *	AForm::GradeTooLowException::what(void) const throw()
 {
 	return ( YELLOW "Error: Form grade too Low." RESET);	
 }
 
-const char *	Form::FormNotSignedException::what(void) const throw()
+const char *	AForm::FormIsAlreadySignedException::what(void) const throw()
+{
+	return ( YELLOW "Form is already signed by other Bureaucrat." RESET);	
+}
+
+const char *	AForm::FormNotSignedException::what(void) const throw()
 {
 	return ( YELLOW "Error: Form not is signed yet." RESET);	
 }
 
-std::ostream& operator<<( std::ostream& out, const Form& src ) {
+std::ostream& operator<<( std::ostream& out, const AForm& src ) {
     out << "Form Name : " << src.getName()
         << ", Signature : [" << (src.getSigned() ? "signed" : "unsigned") 
         << "], Grade required to sign : " << src.getGToSign()

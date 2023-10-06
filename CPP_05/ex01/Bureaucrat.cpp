@@ -23,7 +23,6 @@ Bureaucrat:: Bureaucrat( std::string const & name, int grade) : _name (name) {
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & src) : _name(src._name), _grade(src._grade) {
-    //    this->_name = src.getName();
     //    this->_grade = src.getGrade();
 }
 
@@ -33,7 +32,6 @@ Bureaucrat::~Bureaucrat() {
 Bureaucrat& Bureaucrat::operator=(  Bureaucrat const & src ) {
     if ( this != &src ) {
        this->_grade = src.getGrade();
-        // _name = src.getName();
     }
     return *this;
 }
@@ -73,6 +71,12 @@ void    Bureaucrat::signForm(Form  & form) {
                   << " because his/her grade, " << this->getGrade()
                   << " is less than the minimum grade, "  << form.getGToSign() 
                   << " required to sign "<< form.getName() << RESET <<  std::endl;
+        // std::cerr << e.what() << '\n';
+    }
+    catch(std::exception &e)
+    {
+        std::cerr << YELLOW << this->_name <<  " couldn’t sign " << form.getName()
+                  << " because " << e.what() << RESET <<  std::endl;
         // std::cerr << e.what() << '\n';
     }
     

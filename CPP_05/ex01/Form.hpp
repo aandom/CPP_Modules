@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 19:07:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/09/30 17:08:52 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:00:44 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ class Form
                 virtual const char* what() const throw();
         };
         class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+         };
+        class FormIsAlreadySignedException : public std::exception {
             public:
                 virtual const char* what() const throw();
          };

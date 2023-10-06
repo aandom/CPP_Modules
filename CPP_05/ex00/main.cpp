@@ -54,13 +54,13 @@ void	trycreateobject(std::string name, int grade)
 	try
 	{
 		Bureaucrat	br(name, grade);
-		std::cout << name << " successfully created." << std::endl;
+		std::cout << "Bureaucrat "<< name << " successfully created." << std::endl;
 		return ;
 	}
 	catch(std::exception const & e)
 	{
 		std::cerr << RED "Exception: " << e.what() << RESET << std::endl;
-		std::cout << " failed to create name." << std::endl;
+		std::cout << " failed to create Bureaucrat " << name << "." << std::endl;
 	}
 }
 
@@ -102,10 +102,11 @@ int	main(void)
 	trycreateobject("Peter", 151);
 	trycreateobject("Linda", 1);
 	trycreateobject("kelly", -10);
+	trycreateobject(" ",  0);
 
 	{
 
-		std::cout << std::endl << "\t---- TEST INCREMENT  ----" << std::endl;
+		std::cout << std::endl << "\n\t---- TEST INCREMENT  ----" << std::endl;
         Bureaucrat	br1("John", 42);
         Bureaucrat	br2("Sam", 150);
         Bureaucrat	br4("Linda", 1);
@@ -117,7 +118,7 @@ int	main(void)
         tryincrement(br4);
 	}
 	{
-		std::cout << std::endl << "\t---- TEST DECREMENT  ----" << std::endl;
+		std::cout << std::endl << "\n\t---- TEST DECREMENT  ----" << std::endl;
         Bureaucrat	br1("John", 42);
         Bureaucrat	br2("Sam", 150);
         Bureaucrat	br4("Linda", 1);

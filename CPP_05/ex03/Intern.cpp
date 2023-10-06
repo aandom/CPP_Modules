@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:52:41 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/04 10:47:05 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:47:24 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ Intern & Intern::operator=(const Intern & src) {
 }
 
 
-Form *    createPardonForm( std::string const target) {
+AForm *    createPardonForm( std::string const target) {
     return (new PresidentialPardonForm(target));
 }
-Form *   createRequestForm( std::string const target) {
+AForm *   createRequestForm( std::string const target) {
     return (new RobotomyRequestForm(target));
 }
-Form *   createShrubberyForm( std::string const target) {
+AForm *   createShrubberyForm( std::string const target) {
     return (new ShrubberyCreationForm(target));
 }
 
@@ -44,7 +44,7 @@ const char *	Intern::InvalidFormName::what(void) const throw()
 }
 
 
-Form    * Intern::makeForm(std::string name, std::string target) {
+AForm    * Intern::makeForm(std::string name, std::string target) {
 
     t_forms myforms[3] = {
         {"robotomy request", createRequestForm},

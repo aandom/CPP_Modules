@@ -26,7 +26,7 @@ void	createForm(std::string formName, std::string target)
 		<< "\" with target \"" << target << "\":" << std::endl;
 	Intern	inter = Intern();
 	Bureaucrat Br_1("Boss", 1);
-	Form *	form;
+	AForm *	form;
 	try
 	{
 		form = inter.makeForm(formName, target);

@@ -43,8 +43,8 @@ int	main(void)
 
 	std::cout << std::endl << "-- Signing and executing Shrubbery form:" << std::endl;
 	br1.signForm(shrubForm);
-	br1.executeForm(shrubForm);
-	br2.executeForm(shrubForm);
+	// br1.executeForm(shrubForm);
+	// br2.executeForm(shrubForm);
 
 	std::cout << std::endl << "-- Signing and executing Presidential Pardon form:" << std::endl;
 	br3.executeForm(pardonForm);
@@ -57,6 +57,7 @@ int	main(void)
 	br2.executeForm(robotomyForm);
 	br2.signForm(robotomyForm);
 	br2.executeForm(robotomyForm);
+	br3.executeForm(robotomyForm);
 	br3.executeForm(robotomyForm);
 
 	std::cout << std::endl;

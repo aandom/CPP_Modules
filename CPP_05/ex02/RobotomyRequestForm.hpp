@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 04:26:55 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/03 14:46:49 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:59:56 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "AForm.hpp"
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
     public:
         RobotomyRequestForm(const RobotomyRequestForm & src);

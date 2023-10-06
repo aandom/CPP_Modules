@@ -54,6 +54,8 @@ int   Form::getGToExec() const {
 void    Form::beSigned(const Bureaucrat& src) {
     if ( src.getGrade() > this->_signgrade )
         throw Form::GradeTooLowException();
+    if (this->getSigned())
+        throw Form::FormIsAlreadySignedException();
     this->_signed = true;
 }
 
@@ -67,11 +69,17 @@ const char *	Form::GradeTooLowException::what(void) const throw()
 	return ( YELLOW "Error: Form grade too Low." RESET);	
 }
 
+const char *	Form::FormIsAlreadySignedException::what(void) const throw()
+{
+	return ( YELLOW "Form is already signed by other Bureaucrat." RESET);	
+}
+
+
 std::ostream& operator<<( std::ostream& out, const Form& src ) {
     out << "Form Name : " << src.getName()
         << ", Signature : [" << (src.getSigned() ? "signed" : "unsigned") 
         << "], Grade required to sign : " << src.getGToSign()
-        << ", Grade required to exec : " << src.getGToExec()
-        << std::endl;
+        << ", Grade required to exec : " << src.getGToExec();
+        // << std::endl;
     return out;
 }

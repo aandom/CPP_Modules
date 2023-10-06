@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:50:13 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/04 10:46:11 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 11:46:32 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Intern
         Intern & operator=(const Intern & src);
         
         
-        Form * makeForm(std::string name, std::string target);
+        AForm * makeForm(std::string name, std::string target);
 
         class InvalidFormName : public std::exception {
             public:
@@ -38,7 +38,7 @@ class Intern
     private:
         typedef struct s_forms {
             std::string const & name;
-            Form * (*ffunction)(const std::string );
+            AForm * (*ffunction)(const std::string );
         }   t_forms;
 };
 

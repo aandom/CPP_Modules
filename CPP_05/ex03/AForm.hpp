@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 19:07:17 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/04 11:26:41 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 14:24:21 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@
 class Bureaucrat;
 
 
-class Form
+class AForm
 {
     public:
-        Form(const std::string& name, int gToSign, int gToExec);
-        Form(const Form& src);
-        virtual ~Form();
+        AForm(const std::string& name, int gToSign, int gToExec);
+        AForm(const AForm& src);
+        virtual ~AForm();
 
-        Form&   operator=(const Form& src);
+        AForm&   operator=(const AForm& src);
 
         std::string getName() const;
         bool        getSigned() const;
@@ -57,6 +57,10 @@ class Form
             public:
                 virtual const char* what() const throw();
          };
+        class FormIsAlreadySignedException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+         };
         class FormNotSignedException : public std::exception {
             public:
                 virtual const char* what() const throw();
@@ -68,13 +72,13 @@ class Form
         virtual void        undertakeExecution() const = 0;
          
     private:
-        Form();
+        AForm();
         std::string const _fname;
         bool              _signed;
         int         const _execgrade;
         int         const _signgrade;
 };
 
-std::ostream &	operator<<(std::ostream & out, Form const & src);
+std::ostream &	operator<<(std::ostream & out, AForm const & src);
 
 # endif

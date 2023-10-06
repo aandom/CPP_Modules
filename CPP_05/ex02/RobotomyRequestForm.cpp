@@ -6,17 +6,17 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 04:26:47 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/03 14:45:09 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/06 14:13:58 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string & target) : Form("RobotomyRequestForm", 72, 45),
+RobotomyRequestForm::RobotomyRequestForm(const std::string & target) : AForm("RobotomyRequestForm", 72, 45),
                                                                              _target(target) {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & src) : Form(src),
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & src) : AForm(src),
                                                                              _target(src._target) {    
 }
 
@@ -45,9 +45,12 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 // }
 
 void    RobotomyRequestForm::undertakeExecution() const {
+        static int i;
         std::cout << "making some drilling noise" << std::endl;
-        if ( std::rand() % 2  == 1)
+        // if ( i % 2  == 0)
+        if (i % 2 == 0)
             std::cout << this->_target << " has been robotomized successfully 50% of the time." << std::endl;
         else
             std::cout << "robotomizing " << this->_target << " failed" << std::endl;
+        i++;
 }
