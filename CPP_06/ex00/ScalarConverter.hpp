@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Converter.hpp                                      :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/05 13:41:25 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/07 10:51:36 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERTER_HPP
-# define CONVERTER_HPP
+#ifndef SCLALARCONVERTER_HPP
+# define SCLALARCONVERTER_HPP
 
-class Converter
+class ScalarConverter
 {
     public:
-        Converter();
-        ~Converter();
+        ScalarConverter();
+        ~ScalarConverter();
         
     private:
         /* data */
