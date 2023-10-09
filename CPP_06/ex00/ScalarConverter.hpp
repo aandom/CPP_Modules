@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/09 16:30:30 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/09 21:14:46 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ class ScalarConverter
 
         static int const MAXINT;
         static int const MININT;
-        static int const MAXFLOAT;
-        static int const MINFLOAT;
+        // static int const MAXFLOAT;
+        // static int const MINFLOAT;
         static int const MAXCHAR;
         static int const MINCHAR;
         

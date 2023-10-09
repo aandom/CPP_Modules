@@ -15,8 +15,8 @@
 
 int const ScalarConverter::MAXINT   = std::numeric_limits<int>::max() ;
 int const ScalarConverter::MININT   = std::numeric_limits<int>::min() ;
-int const ScalarConverter::MAXFLOAT = std::numeric_limits<float>::max() ;
-int const ScalarConverter::MINFLOAT = std::numeric_limits<float>::min() ;
+// int const ScalarConverter::MAXFLOAT = std::numeric_limits<float>::max() ;
+// int const ScalarConverter::MINFLOAT = std::numeric_limits<float>::min() ;
 int const ScalarConverter::MAXCHAR  = std::numeric_limits<char>::max() ;
 int const ScalarConverter::MINCHAR  = std::numeric_limits<char>::min() ;
 
@@ -271,8 +271,8 @@ std::ostream &	operator<<(std::ostream &os, ScalarConverter const &src)
 	os << "\n \t- int\t: ";
 	if (ScalarConverter::INTOVERLOW)
         os << "impossible";
-    else if (ScalarConverter::CHAR_NONPRINT)
-        os << "not displayable";
+    // else if (ScalarConverter::CHAR_NONPRINT)
+    //     os << "not displayable";
 	else
 		os << src.getInt();
 	os << "\n\t- float\t: ";
