@@ -220,7 +220,6 @@ void    ScalarConverter::_castFromChar() {
 void    ScalarConverter::_converter(std::string const & input) {
     
     this->_identifyType(input);
-    // this->_seterror();
     switch (this->_type)
 	{
 		case INT:

@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/10 17:06:24 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:01:03 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ class ScalarConverter
         static int const MINCHAR;
         
         static int INTOVERLOW;
-        // static int FLOATOVERLOW;
-        // static int DOUBLEOVERLOW;
         static int CHAR_NONPRINT;
         static int CHAROVERLOW;
         
@@ -98,9 +96,6 @@ class ScalarConverter
         void    _castFromFloat();
         void    _castFromDouble();
         void    _castFromChar();
-        void    _seterror();
-        
-
 };
 
 std::ostream &	operator<<(std::ostream & out, ScalarConverter const & src);
