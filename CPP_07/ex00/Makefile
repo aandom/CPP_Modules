@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/29 11:11:11 by aandom            #+#    #+#              #
-#    Updated: 2023/09/29 11:11:11 by aandom           ###   ########.fr        #
+#    Created: 2023/10/11 14:08:24 by aandom            #+#    #+#              #
+#    Updated: 2023/10/11 14:08:24 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = converter
+NAME = template
 
-SRC = ScalarConverter.cpp main.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

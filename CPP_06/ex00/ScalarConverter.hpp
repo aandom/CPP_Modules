@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/09 21:14:46 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/10 17:06:24 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ class ScalarConverter
         int    getInt() const;
         float    getFloat() const;
         double    getDouble() const;
+
+        void    printChar() const;
+        void    printInt() const;
+        void    printFloat() const;
+        void    printDouble() const;
         
         
 		class	NotAStrLiteralException : public std::exception {
@@ -94,6 +99,7 @@ class ScalarConverter
         void    _castFromDouble();
         void    _castFromChar();
         void    _seterror();
+        
 
 };
 

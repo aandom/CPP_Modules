@@ -89,6 +89,8 @@ bool    ScalarConverter::_checkInt(std::string const & input) {
         return (false);
     }
     this->_intform = static_cast<int>(nbr);
+    if (this->_intform > MAXCHAR || this->_intform < MINCHAR)
+        this->CHAROVERLOW = 1;
     return (true);
 
 }
@@ -102,6 +104,10 @@ bool    ScalarConverter::_checkFloat(std::string const & input) {
     if (*endptr == 'f' && (endptr + 1 && *(endptr + 1) != '\0'))
         return (false);
     this->_floatform = nbr;
+    if (this->_floatform > MAXCHAR || this->_floatform < MINCHAR)
+        this->CHAROVERLOW = 1;
+    if (this->_floatform > MAXINT || this->_floatform < MININT)
+        this->INTOVERLOW = 1;
     return (true);
 
 }
@@ -119,6 +125,10 @@ bool    ScalarConverter::_checkDouble(std::string const & input) {
     if (endptr == input.c_str() || *endptr != '\0')
         return (false);
     this->_doubleform = nbr;
+    if (this->_doubleform > MAXCHAR || this->_doubleform < MINCHAR)
+        this->CHAROVERLOW = 1;
+    if (this->_doubleform > MAXINT || this->_doubleform < MININT)
+        this->INTOVERLOW = 1;
     return (true);
 
 }
@@ -207,35 +217,10 @@ void    ScalarConverter::_castFromChar() {
 	this->_intform = static_cast<int>(this->_charform);
 }
 
-void    ScalarConverter::_seterror() {
-
-	switch (_type)
-	{
-		case INT:
-			if (this->_intform > MAXCHAR || this->_intform < MINCHAR)
-				this->CHAROVERLOW = 1;
-			break ;
-		case FLOAT:
-			if (this->_floatform > MAXCHAR || this->_floatform < MINCHAR)
-				this->CHAROVERLOW = 1;
-			if (this->_floatform > MAXINT || this->_floatform < MININT)
-				this->INTOVERLOW = 1;
-			break ;
-		case DOUBLE:
-			if (this->_doubleform > MAXCHAR || this->_doubleform < MINCHAR)
-				this->CHAROVERLOW = 1;
-			if (this->_doubleform > MAXINT || this->_doubleform < MININT)
-				this->INTOVERLOW = 1;
-			break ;
-		default:
-			return ;
-	}
-}
-
 void    ScalarConverter::_converter(std::string const & input) {
     
     this->_identifyType(input);
-    this->_seterror();
+    // this->_seterror();
     switch (this->_type)
 	{
 		case INT:
@@ -258,30 +243,42 @@ void    ScalarConverter::_converter(std::string const & input) {
 
 }
 
+void    ScalarConverter::printChar() const {
+	if (this->CHAROVERLOW)
+        std::cout << "impossible";
+    else if (this->CHAR_NONPRINT)
+        std::cout << "Non displayable";
+	else
+		std::cout << this->getChar();
+}
+
+void    ScalarConverter::printInt() const {
+	if (this->INTOVERLOW)
+        std::cout << "impossible";
+	else
+		std::cout << this->getInt();
+}
+void    ScalarConverter::printFloat() const {
+    if (this->getFloat() == static_cast<int>(this->getFloat()))
+        std::cout << std::fixed << std::setprecision(1) << this->getFloat() << "f";
+    else
+        std::cout << this->getFloat() << "f";
+}
+
+void    ScalarConverter::printDouble() const {
+    std::cout << this->getDouble();
+}
+
+
+
+
 
 std::ostream &	operator<<(std::ostream &os, ScalarConverter const &src)
 {
-	os << "\t- char\t: ";
-	if (src.CHAROVERLOW)
-        os << "impossible";
-    else if (src.CHAR_NONPRINT)
-        os << "not displayable";
-	else
-		os << src.getChar();
-	os << "\n \t- int\t: ";
-	if (ScalarConverter::INTOVERLOW)
-        os << "impossible";
-    // else if (ScalarConverter::CHAR_NONPRINT)
-    //     os << "not displayable";
-	else
-		os << src.getInt();
-	os << "\n\t- float\t: ";
-		if (src.getFloat() == static_cast<int>(src.getFloat()))
-			os << std::fixed << std::setprecision(1) << src.getFloat() << "f";
-		else
-			os << src.getFloat() << "f";
-	os << "\n \t- double\t: "
-		<< src.getDouble();
+    os << "\t- char\t: "; src.printChar();
+    os << "\n \t- int\t: "; src.printInt();
+    os << "\n\t- float\t: "; src.printFloat();
+    os << "\n\t- double: "; src.printDouble();
 	return (os);
 }
 

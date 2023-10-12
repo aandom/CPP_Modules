@@ -5,34 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:17:14 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/09 16:17:14 by aandom           ###   ########.fr       */
+/*   Created: 2023/10/10 21:05:05 by aandom            #+#    #+#             */
+/*   Updated: 2023/10/10 21:05:05 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serialization.hpp"
 
-#include <iostream>
-
-int	main(int ac, char ** av)
+int main( void )
 {
-	if (ac != 2)
-	{
-		std::cout << "Usage: ./converter <input>\n"
-			"Valid Input: [int/float/double/char]."
-			<< std::endl;
-		return (1);
-	}
-	
-	try
-	{
-		std::cout << YELLOW "---- Converting [" << av[1] << "]" RESET << std::endl;
-		ScalarConverter	convert(av[1]);
-		std::cout << convert << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << RED "Input could not be converted: " << e.what() << RESET << std::endl;
-	}
-	return (0);
+    Data *data = new Data;
+
+    data->name = "achraf hakimi";
+    data->age = 30;
+
+    uintptr_t deserialized = serialize(data);
+
+    // std::cout << "Name: " << deserialize( serialize( data ) )->name << std::endl;
+    // std::cout << "Age: " << deserialize( serialize( data ) )->age << std::endl;
+
+    std::cout << "Name: " << deserialize(deserialized)->name << std::endl;
+    std::cout << "Age: " << deserialize(deserialized)->age << std::endl;
+
+    delete data;
+
+    return (0);
 }

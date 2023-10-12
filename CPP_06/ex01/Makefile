@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/29 11:11:11 by aandom            #+#    #+#              #
-#    Updated: 2023/09/29 11:11:11 by aandom           ###   ########.fr        #
+#    Created: 2023/10/10 20:53:12 by aandom            #+#    #+#              #
+#    Updated: 2023/10/10 20:53:12 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = converter
+NAME = serialize
 
-SRC = ScalarConverter.cpp main.cpp
+SRC = Serialization.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98

@@ -5,14 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/29 11:11:11 by aandom            #+#    #+#              #
-#    Updated: 2023/09/29 11:11:11 by aandom           ###   ########.fr        #
+#    Created: 2023/10/11 03:05:37 by aandom            #+#    #+#              #
+#    Updated: 2023/10/11 03:05:37 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+NAME = identify
 
-NAME = converter
-
-SRC = ScalarConverter.cpp main.cpp
+SRC = Base.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
