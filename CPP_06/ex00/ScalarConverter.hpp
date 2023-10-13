@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/13 03:30:01 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/13 21:01:11 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,21 @@ class ScalarConverter
     public:
         static int const MAXINT;
         static int const MININT;
+        static int const MAX_FLOAT;
+        static int const MIN_FLOAT;
         static int const MAXCHAR;
         static int const MINCHAR;
         
         static int INTOVERLOW;
         static int CHAR_NONPRINT;
         static int CHAROVERLOW;
+        static int FLOATOVERLOW;
 
-        static int     _type;
-        static int     _intform;
-        static float   _floatform;
-        static double  _doubleform;
-        static char    _charform;
+        static int     type;
+        static int     intform;
+        static float   floatform;
+        static double  doubleform;
+        static char    charform;
         
         static void converter(std::string const & input);
 
@@ -70,18 +73,19 @@ class ScalarConverter
 			public:
 				virtual const char *	what(void) const throw();
 		};
-
         
-        static void    _identifyType(std::string const & input);
-        static bool    _checkInt(std::string const & input);
-        static bool    _checkFloat(std::string const & input);
-        static bool    _checkDouble(std::string const & input);
-        static bool    _checkChar(std::string const & input);
-        static bool    _checkNotaNum(std::string const & input);
-        static void    _castFromInt();
-        static void    _castFromFloat();
-        static void    _castFromDouble();
-        static void    _castFromChar();
+        static int    checkinf(std::string const & input);
+        
+        static void    identifyType(std::string const & input);
+        static bool    checkInt(std::string const & input);
+        static bool    checkFloat(std::string const & input);
+        static bool    checkDouble(std::string const & input);
+        static bool    checkChar(std::string const & input);
+        static bool    checkNotaNum(std::string const & input);
+        static void    castFromInt();
+        static void    castFromFloat();
+        static void    castFromDouble();
+        static void    castFromChar();
         
     private:
         

@@ -23,7 +23,21 @@ struct Data
     int         age;
 };
 
-uintptr_t    serialize( Data *data );
-Data*   deserialize( uintptr_t data );
+class Serialization
+{
+    public:
+        static uintptr_t    serialize( Data *data );
+        static Data*   deserialize( uintptr_t data );
+        
+    private:
+        Serialization();
+        Serialization(Serialization const & src);
+        ~Serialization();
+
+        Serialization & operator=(Serialization const & src);
+
+};
+
+
 
 # endif 
