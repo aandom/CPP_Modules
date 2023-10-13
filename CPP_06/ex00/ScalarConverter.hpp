@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:56 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/12 14:01:03 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/13 03:30:01 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,40 @@
 #define PURPLE "\e[35m"
 #define CYAN "\e[36m"
 
+enum    e_type 
+{
+    DEF = 0,
+    INT,
+    FLOAT,
+    DOUBLE,
+    CHAR,
+    NOTNUM  
+};
 
 class ScalarConverter
 {
     public:
-        ScalarConverter(std::string const & input);
-        ScalarConverter(ScalarConverter const & src);
-        ~ScalarConverter();
+        static int const MAXINT;
+        static int const MININT;
+        static int const MAXCHAR;
+        static int const MINCHAR;
+        
+        static int INTOVERLOW;
+        static int CHAR_NONPRINT;
+        static int CHAROVERLOW;
 
-        ScalarConverter & operator=(ScalarConverter const & src);
+        static int     _type;
+        static int     _intform;
+        static float   _floatform;
+        static double  _doubleform;
+        static char    _charform;
+        
+        static void converter(std::string const & input);
 
-        char    getChar() const;
-        int    getInt() const;
-        float    getFloat() const;
-        double    getDouble() const;
-
-        void    printChar() const;
-        void    printInt() const;
-        void    printFloat() const;
-        void    printDouble() const;
+        static void    printChar();
+        static void    printInt();
+        static void    printFloat();
+        static void    printDouble();
         
         
 		class	NotAStrLiteralException : public std::exception {
@@ -56,48 +71,29 @@ class ScalarConverter
 				virtual const char *	what(void) const throw();
 		};
 
-        static int const MAXINT;
-        static int const MININT;
-        // static int const MAXFLOAT;
-        // static int const MINFLOAT;
-        static int const MAXCHAR;
-        static int const MINCHAR;
         
-        static int INTOVERLOW;
-        static int CHAR_NONPRINT;
-        static int CHAROVERLOW;
+        static void    _identifyType(std::string const & input);
+        static bool    _checkInt(std::string const & input);
+        static bool    _checkFloat(std::string const & input);
+        static bool    _checkDouble(std::string const & input);
+        static bool    _checkChar(std::string const & input);
+        static bool    _checkNotaNum(std::string const & input);
+        static void    _castFromInt();
+        static void    _castFromFloat();
+        static void    _castFromDouble();
+        static void    _castFromChar();
         
     private:
-        enum    e_type 
-        {
-            DEF = 0,
-            INT,
-            FLOAT,
-            DOUBLE,
-            CHAR,
-            NOTNUM  
-        };
         
         ScalarConverter();
-        int     _type;
-        int     _intform;
-        float   _floatform;
-        double  _doubleform;
-        char    _charform;
+        ScalarConverter(std::string const & input);
+        ScalarConverter(ScalarConverter const & src);
+        ~ScalarConverter();
 
-        void    _identifyType(std::string const & input);
-        void    _converter(std::string const & input);
-        bool    _checkInt(std::string const & input);
-        bool    _checkFloat(std::string const & input);
-        bool    _checkDouble(std::string const & input);
-        bool    _checkChar(std::string const & input);
-        bool    _checkNotaNum(std::string const & input);
-        void    _castFromInt();
-        void    _castFromFloat();
-        void    _castFromDouble();
-        void    _castFromChar();
+        ScalarConverter & operator=(ScalarConverter const & src);
+
 };
 
-std::ostream &	operator<<(std::ostream & out, ScalarConverter const & src);
+// std::ostream &	operator<<(std::ostream & out, ScalarConverter const & src);
 
 # endif

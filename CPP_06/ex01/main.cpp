@@ -11,21 +11,29 @@
 /* ************************************************************************** */
 
 #include "Serialization.hpp"
+#include <iostream>
 
 int main( void )
 {
     Data *data = new Data;
 
-    data->name = "achraf hakimi";
+    data->name = "Alice";
     data->age = 30;
 
-    uintptr_t deserialized = serialize(data);
+    uintptr_t serialized = serialize(data);
+    std::cout << "Before Serilization " << std::endl; 
+    std::cout << "Name: " << data->name << std::endl;
+    std::cout << "Age: " << data->age << std::endl;
 
-    // std::cout << "Name: " << deserialize( serialize( data ) )->name << std::endl;
-    // std::cout << "Age: " << deserialize( serialize( data ) )->age << std::endl;
+    std::cout << "After Serilization :  " << serialized << std::endl;
 
-    std::cout << "Name: " << deserialize(deserialized)->name << std::endl;
-    std::cout << "Age: " << deserialize(deserialized)->age << std::endl;
+    // std::cout << "Name: " << deserialize(serialized)->name << std::endl;
+    // std::cout << "Age: " << deserialize(serialized)->age << std::endl;
+
+    Data * deserialized = deserialize(serialized);
+
+    std::cout << "Name: " << deserialized->name << std::endl;
+    std::cout << "Age: " << deserialized->age << std::endl;
 
     delete data;
 
