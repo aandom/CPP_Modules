@@ -14,13 +14,16 @@
 # define ARRAY_HPP
 
 #include <iostream>
+#define RESET "\e[0m"
+#define YELLOW "\e[33m"
+
 
 template < typename T >
 class Array {
     public:
         Array(void) : _array(NULL), _arrsize(0) {};
         Array( unsigned int n ) : _array(new T[n]), _arrsize(n) {};
-        Array( const Array& src ) : _array(new T[src.getSize()]), _arrsize(src.getSize()) {
+        Array( const Array& src ) : _array(new T[src.size()]), _arrsize(src.size()) {
             for ( unsigned int i = 0; i < this->_arrsize; i++ )
                 this->_array[i] = src._array[i];
         };
@@ -28,7 +31,7 @@ class Array {
         Array& operator=( const Array& src ) {
             if ( this != &src ) {
                 delete [] _array;
-                this->_array = new T[src.getSize()];
+                this->_array = new T[src.size()];
                 this->_arrsize = src._arrsize;
                 for ( unsigned int i = 0; i < this->_arrsize; i++ )
                     this->_array[i] = src._array[i];
@@ -39,16 +42,16 @@ class Array {
         T& operator[]( unsigned int i ) const {
             if ( i >= this->_arrsize )
                 throw IndexOutOfBoundsException();
-            return _array[i];
+            return this->_array[i];
         }
 
-        unsigned int  getSize( void ) const { return this->_arrsize; }
+        unsigned int  size( void ) const { return this->_arrsize; }
 
         ~Array( void ) { delete [] this->_array; }
 
         class IndexOutOfBoundsException : public std::exception {
             public:
-                virtual const char* what() const throw() { return "Index is out of bounds";}
+                virtual const char* what() const throw() { return YELLOW "Index is out of bounds" RESET ;}
         };
 
     private:
@@ -59,9 +62,9 @@ class Array {
 template < typename T >
 std::ostream& operator<<( std::ostream& out, const Array<T>& array ) {
     out << "[";
-    for ( unsigned int i = 0 ; i < array.getSize(); i++ ) {
+    for ( unsigned int i = 0 ; i < array.size(); i++ ) {
         out << array[i] ;
-        if (i < array.getSize() - 1)
+        if (i < array.size() - 1)
             out << ", ";
     }
     out << "]";

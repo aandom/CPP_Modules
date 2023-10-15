@@ -14,8 +14,8 @@
 
 int const ScalarConverter::MAXINT   = std::numeric_limits<int>::max();
 int const ScalarConverter::MININT   = std::numeric_limits<int>::min();
-int const ScalarConverter::MAX_FLOAT   = std::numeric_limits<float>::max();
-int const ScalarConverter::MIN_FLOAT   = std::numeric_limits<float>::min();
+float const ScalarConverter::MAX_FLOAT   = std::numeric_limits<float>::max();
+float const ScalarConverter::MIN_FLOAT   = -1 * std::numeric_limits<float>::max();
 int const ScalarConverter::MAXCHAR  = std::numeric_limits<char>::max();
 int const ScalarConverter::MINCHAR  = std::numeric_limits<char>::min();
 
@@ -65,12 +65,12 @@ bool    ScalarConverter::checkFloat(std::string const & input) {
         FLOATOVERLOW = 1;
         return (false);
     }
+    if (nbr2 > MAXCHAR || nbr2 < MINCHAR)
+         CHAROVERLOW = 1;
+    if (nbr2 > MAXINT || nbr2 < MININT)
+        INTOVERLOW = 1;
     // floatform = nbr;
     floatform = static_cast<float>(nbr2);
-    if (floatform > MAXCHAR || floatform < MINCHAR)
-        CHAROVERLOW = 1;
-    if (floatform > MAXINT || floatform < MININT)
-        INTOVERLOW = 1;
     return (true);
 }
 
