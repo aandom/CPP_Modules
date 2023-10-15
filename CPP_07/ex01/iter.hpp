@@ -18,19 +18,23 @@
 template <typename T>
 void    iter(T *array, size_t size, void (*f)(T const &))
 {
-    std::cout << "[ ";
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++)
         f(array[i]);
-        if (i < size - 1)
-            std::cout << ", ";
-    }
-    std::cout << " ]" << std::endl;
+
+    // std::cout << "[ ";
+    // for (size_t i = 0; i < size; i++) {
+    //     f(array[i]);
+    //     if (i < size - 1)
+    //         std::cout << ", ";
+    // }
+    // std::cout << " ]" << std::endl;
 }
 
 template <typename T>
 void    printelement(T const &i)
 {
-    std::cout << i;
+    std::cout << i << std::endl;
+    // std::cout << i;
 }
 
 # endif

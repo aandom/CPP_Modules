@@ -45,6 +45,7 @@ int main( void )
 // {
 //     public:
 //         Awesome( void ): _n( 42 ) { return; }
+//         Awesome( int n ): _n( n ) { return; }
 //         int get( void ) const { return this->_n; }
 //     private:
 //         int _n;
@@ -53,12 +54,16 @@ int main( void )
 // std::ostream & operator<<(std::ostream & o, Awesome const & rhs) { o << rhs.get(); return o; }
 
 // template<typename T >
-// void print( T const & x) { std::cout << x << std::endl; return; }
+// void print( T const & x) { std::cout << " " << x  << std::endl; return; }
 
 // int main() {
-//     int tab[] = { 0, 1, 2, 3, 4}; // <-- I never understood why you can't write int[] tab. Wouldn't that make more sense?
+//     int tab[] = { 0, 1, 2, 3, 4};
 //     Awesome tab2[5];
-//     iter(tab, 5, print); 
-//     iter(tab2, 5, print);
+//     Awesome tab3[4] = { Awesome(40),  Awesome(41),  Awesome(42),  Awesome(43)};
+//     std::cout << "ARR_1 = \n[ \n"; iter(tab, 5, print); std::cout << "]\n" << std::endl;
+//     std::cout << "ARR_2 = \n[ \n"; iter(tab2, 5, print); std::cout<< "]\n" << std::endl;
+//     std::cout << "ARR_3 = \n[ \n"; iter(tab3, 4, print); std::cout << "]\n" << std::endl;
+//     // iter(tab2, 5, print);
+//     // iter(tab3, 4, print);
 //     return 0;
 // }

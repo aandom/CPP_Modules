@@ -64,8 +64,12 @@ int main( void )
 // int main(void)
 // {
 //     Awesome a(2), b(4);
-//     std::cout << a <<" " <<b<< std::endl;
+
+//     std::cout << "Before_swap : " << "Awesome a = " << a << ", Awesome b = " << b << std::endl;
 //     swap(a, b);
-//     std::cout << a <<" " <<b<< std::endl;
-//     std::cout << max(a, b) << std::endl;
+//     std::cout << "After_swap  : " << "Awesome a = " << a << ", Awesome b = " << b << std::endl;
+//     std::cout<< std::endl;
+
+//     std::cout << "min( " << a << ", " <<  b << " ) = " << min( a, b ) << std::endl;
+//     std::cout << "max( " << a << ", " <<  b << " ) = " << max( a, b ) << std::endl;
 // }

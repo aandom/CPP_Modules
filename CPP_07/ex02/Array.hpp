@@ -18,7 +18,7 @@
 #define YELLOW "\e[33m"
 
 
-template < typename T >
+template <typename T>
 class Array {
     public:
         Array(void) : _array(NULL), _arrsize(0) {};
@@ -30,7 +30,7 @@ class Array {
 
         Array& operator=( const Array& src ) {
             if ( this != &src ) {
-                delete [] _array;
+                delete [] this->_array;
                 this->_array = new T[src.size()];
                 this->_arrsize = src._arrsize;
                 for ( unsigned int i = 0; i < this->_arrsize; i++ )

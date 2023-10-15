@@ -70,6 +70,7 @@ bool    ScalarConverter::checkFloat(std::string const & input) {
     if (nbr2 > MAXINT || nbr2 < MININT)
         INTOVERLOW = 1;
     // floatform = nbr;
+    intform = static_cast<int>(nbr2);
     floatform = static_cast<float>(nbr2);
     return (true);
 }
@@ -164,7 +165,7 @@ void    ScalarConverter::castFromInt() {
 }
 
 void    ScalarConverter::castFromFloat() {
-	intform = static_cast<int>(floatform);
+	// intform = static_cast<int>(floatform);
 	doubleform = static_cast<double>(floatform);
 	charform = static_cast<char>(floatform);
 	if (!std::isprint(charform))

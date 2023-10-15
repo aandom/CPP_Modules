@@ -33,7 +33,7 @@ int main( void )
     Data * deserialized = Serialization::deserialize(serialized);
 
     std::cout << "Name: " << deserialized->name << std::endl;
-    std::cout << "Age: " << deserialized->age << std::endl;
+    std::cout << "Age: " << data->age << std::endl;
 
     delete data;
 
