@@ -13,6 +13,19 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <algorithm>
+# include <iostream>
 
+class Span
+{
+    public:
+        Span(unsinged int n);
+        Span & Span(Span const & src);
+        ~Span();
+
+    private:
+        Span();
+        unsigned int _n;
+};
 
 # endif
