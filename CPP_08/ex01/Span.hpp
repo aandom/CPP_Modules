@@ -29,10 +29,13 @@ class Span
 
         Span & operator=(Span const & src);
 
+        const std::list<int> & getArray() const;
+
         void            addNumber(int n);
         unsigned int    shortestSpan() const;
         unsigned int    longestSpan() const;
 
+        void            addNumber(std::iterator *begin, );
 
     private:
         Span();
@@ -40,5 +43,6 @@ class Span
         std::list<int> _array;
 };
 
+std::ostream &	operator<<(std::ostream &os, Span const &obj);
 std::ostream &	operator<<(std::ostream &os, std::list<int> &obj);
 # endif

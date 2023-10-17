@@ -6,14 +6,11 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:51 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/17 10:32:35 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/17 17:36:38 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-
-// Span::Span(unsigned int n) : _arrsize(n) {
-// }
 
 Span::Span( unsigned int n ) : _arrsize( n ) {
 }
@@ -33,6 +30,10 @@ Span & Span::operator=(Span const & src) {
     return (*this);
 }
 
+const std::list<int> &  Span::getArray() const {
+    return (this->_array);
+}
+
 void    Span::addNumber(int n) {
     if (this->_arrsize > this->_array.size())
         this->_array.push_back(n);
@@ -41,7 +42,7 @@ void    Span::addNumber(int n) {
     
 }
 
-std::ostream &	operator<<(std::ostream &os, std::list<int> &obj)
+std::ostream &	operator<<(std::ostream &os, std::list<int> const  &obj)
 {
     std::cout << "[ ";
     for (std::list<int>::const_iterator it = obj.begin();
@@ -51,30 +52,26 @@ std::ostream &	operator<<(std::ostream &os, std::list<int> &obj)
     return (os);
 }
 
-unsigned int Span::shortestSpan() const {
-    int	shortest;
-    std::list<int> sorted;
-    sorted = this->_array;
+std::ostream &	operator<<(std::ostream &os,  Span const &obj)
+{
+	std::cout << obj.getArray();
+    return (os);
+}
 
+unsigned int Span::shortestSpan() const {
+    unsigned int	shortest;
 	if (this->_array.size() < 2)
 		throw (std::range_error("Cann't compute Shortest Span: small list size"));
-
-	// std::list<int>	sorted(this->_array);
-    std::cout << "before sort: " << sorted << std::endl;
+    std::list<int> sorted(this->_array);
     sorted.sort();
-	// std::sort(sorted.begin(), sorted.end());
-    std::cout << "after sort: " << sorted << std::endl;
 	std::list<int>	difference(sorted);
-    std::cout << "difference (sorted) : " << difference << std::endl;
 	std::adjacent_difference(sorted.begin(), sorted.end(), difference.begin());
-    std::cout << "adjacent diference: " << difference << std::endl;
-	shortest = *std::min_element(++(difference.begin()), difference.end());
+	shortest = *std::min_element(++difference.begin(), difference.end());
 	return (shortest);
 }
 
 
 unsigned int Span::longestSpan() const {
-    int	shortest;
     std::list<int> sorted;
     sorted = this->_array;
 
