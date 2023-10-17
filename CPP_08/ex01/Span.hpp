@@ -13,19 +13,32 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-# include <algorithm>
+# include <list>
+# include <vector>
+# include <string>
+# include <numeric>
 # include <iostream>
+# include <algorithm>
 
 class Span
 {
     public:
-        Span(unsinged int n);
-        Span & Span(Span const & src);
+        Span(unsigned int n);
+        Span(Span const & src);
         ~Span();
+
+        Span & operator=(Span const & src);
+
+        void            addNumber(int n);
+        unsigned int    shortestSpan() const;
+        unsigned int    longestSpan() const;
+
 
     private:
         Span();
-        unsigned int _n;
+        unsigned int _arrsize;
+        std::list<int> _array;
 };
 
+std::ostream &	operator<<(std::ostream &os, std::list<int> &obj);
 # endif
