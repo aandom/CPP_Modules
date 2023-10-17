@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:51 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/17 17:36:38 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/17 19:04:17 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ const std::list<int> &  Span::getArray() const {
 void    Span::addNumber(int n) {
     if (this->_arrsize > this->_array.size())
         this->_array.push_back(n);
+    else
+        throw std::out_of_range("Cannot add a number: list is full");
+    
+}
+
+void    Span::addNumber(std::list<int>::const_iterator itbegin, std::list<int>::const_iterator itend) {
+    if (std::abs(std::distance(itbegin, itend)) > (int) (this->_arrsize - this->_array.size()))
+        throw std::out_of_range("Cannot add a number: list is full you cannot anymore element");
+    if (this->_arrsize > this->_array.size()) {
+        this->_array.insert(this->_array.end(), itbegin, itend);
+    }
     else
         throw std::out_of_range("Cannot add a number: list is full");
     

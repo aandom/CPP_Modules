@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:18 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/17 10:30:51 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/17 18:54:00 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main( void )
     sp.addNumber( 17 );
     sp.addNumber( 11 );
 
-    // std::cout << "sp: " << sp << std::endl;
+    std::cout << "sp: " << sp << std::endl;
 
     std::cout << "longestSpan: " << sp.longestSpan() << std::endl;
     std::cout << "shortestSpan: " << sp.shortestSpan() << std::endl;
@@ -35,13 +35,15 @@ int main( void )
     std::cout << "\n---- TEST #1 -----" << std::endl;
 
     try {
-        std::list<int>    l( 10000 );
+        std::list<int> l( 10 );
+        std::list<int> m(20);
         std::srand( time ( NULL ) );
         std::generate( l.begin(), l.end(), std::rand );
 
         Span span( l.size() );
 
-        // span.addNumber( l.begin(), l.end() );
+        span.addNumber(m.begin(), m.end());
+        std::cout << "span: " << span << std::endl;
 
         std::cout << "Longest span: " << span.longestSpan() << std::endl;
         std::cout << "Shortest span: " << span.shortestSpan() << std::endl;

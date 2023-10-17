@@ -19,6 +19,7 @@
 # include <numeric>
 # include <iostream>
 # include <algorithm>
+#include <iterator>
 
 class Span
 {
@@ -35,7 +36,7 @@ class Span
         unsigned int    shortestSpan() const;
         unsigned int    longestSpan() const;
 
-        void            addNumber(std::iterator *begin, );
+        void            addNumber(std::list<int>::const_iterator itbegin, std::list<int>::const_iterator itend);
 
     private:
         Span();
