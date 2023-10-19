@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:18 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/17 18:54:00 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/19 22:25:59 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,88 @@
 
 #include "Span.hpp"
 
+
+void    testLongestSpan(Span const & sp) {
+
+    try {
+        std::cout << "Longest span\t: " << sp.longestSpan() << std::endl;
+    } catch ( std::exception& e ) {
+        std::cout << e.what() << std::endl; 
+    }
+}
+
+void    testShortestSpan(Span const & sp) {
+
+    try {
+        std::cout << "Shortest span\t: " << sp.shortestSpan() << std::endl;
+    } catch ( std::exception& e ) {
+        std::cout << e.what() << std::endl; 
+    }
+}
+
+void    testaddNum(Span & sp, int num) {
+
+    try {
+        sp.addNumber(num);
+    } catch ( std::exception& e ) {
+        std::cout << e.what() << std::endl; 
+    }
+}
+
+
+int RandomNumber () { return (std::rand()%100); }
+
+void    testAddWithRange(Span & sp, unsigned int range) {
+    
+    std::list<int> m(range);
+    // std::srand( time ( NULL ) );
+    std::srand ( unsigned ( std::time(0) ) );
+    std::generate( m.begin(), m.end(), RandomNumber());
+
+    try {
+        sp.addNumber(m.begin(), m.end());
+    } catch ( std::exception& e ) {
+        std::cout << e.what() << std::endl; 
+    }
+}
+
+
+
+
+
 int main( void )
 {
     std::cout << "---- TEST #1 -----" << std::endl;
 
     Span sp = Span( 5 );
 
-    sp.addNumber( -9 );
-    sp.addNumber( 3 );
-    sp.addNumber( 9 );
-    sp.addNumber( 17 );
-    sp.addNumber( 11 );
+    testaddNum(sp, -9);
+    testaddNum(sp, 3);
+    testaddNum(sp, 9);
+    testaddNum(sp, 17);
+    testaddNum(sp, 111);
+    
 
     std::cout << "sp: " << sp << std::endl;
+    
+    testLongestSpan(sp);
+    testShortestSpan(sp);
 
-    std::cout << "longestSpan: " << sp.longestSpan() << std::endl;
-    std::cout << "shortestSpan: " << sp.shortestSpan() << std::endl;
+    std::cout << "\n---- TEST #2 -----" << std::endl;
 
-    std::cout << "\n---- TEST #1 -----" << std::endl;
+    Span span(12);
 
-    try {
-        std::list<int> l( 10 );
-        std::list<int> m(20);
-        std::srand( time ( NULL ) );
-        std::generate( l.begin(), l.end(), std::rand );
+    std::cout << "span: " << span << std::endl;
+    testAddWithRange(span , 12);
+    std::cout << "span: " << span << std::endl;
 
-        Span span( l.size() );
+    testLongestSpan(span);
+    testShortestSpan(span);
 
-        span.addNumber(m.begin(), m.end());
-        std::cout << "span: " << span << std::endl;
 
-        std::cout << "Longest span: " << span.longestSpan() << std::endl;
-        std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+        // std::cout << "Longest span: " << span.longestSpan() << std::endl;
+        // std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
         
-    } catch ( std::exception& e ) {
-        std::cout << e.what() << std::endl; 
-    }
 
     return 0;
 }

@@ -19,19 +19,26 @@
 #include <list>
 
 template <typename T>
-void    easyfind(T& arr, int num) {
+typename T::iterator   easyfind(T& arr, int num) {
 
-    // typename T::iterator it;
+    typename T::iterator it;
 
-    // it = std::find(arr.begin(), arr.end(), num);
-    // if (it != arr.end())
-    //     throw (std::out_of_range("Element Not found"));
-    // return (it);
-
-    if( std::find(arr.begin(), arr.end(), num) != arr.end())
-        std::cout << "Found" << std::endl;
-    else
-        std::cout << "not found" << std::endl;
+    it = std::find(arr.begin(), arr.end(), num);
+    if (it == arr.end())
+        throw (std::out_of_range("Element Not found"));
+    return (it);
 }
+
+
+// template <typename T, typename C>
+// typename T::iterator   easyfind(T& arr, C& num) {
+
+//     typename T::iterator it;
+//     it = std::find(arr.begin(), arr.end(), num);
+//     if (it == arr.end())
+//         throw (std::out_of_range("Element Not found"));
+//     return (it);
+// }
+
 
 # endif
