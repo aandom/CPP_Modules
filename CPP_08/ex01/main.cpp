@@ -6,12 +6,13 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:18 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/19 22:25:59 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/20 16:22:29 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Span.hpp"
 # include <iostream>
+# include <limits>
 
 #include "Span.hpp"
 
@@ -44,17 +45,19 @@ void    testaddNum(Span & sp, int num) {
 }
 
 
-int RandomNumber () { return (std::rand()%100); }
+int RandomNumber () { return (std::rand()% INT_MAX); }
 
 void    testAddWithRange(Span & sp, unsigned int range) {
-    
-    std::list<int> m(range);
-    // std::srand( time ( NULL ) );
+
+
+    std::list<int> m (range);
+
     std::srand ( unsigned ( std::time(0) ) );
-    std::generate( m.begin(), m.end(), RandomNumber());
+    std::generate (m.begin(), m.end(), RandomNumber);
 
     try {
-        sp.addNumber(m.begin(), m.end());
+        sp.addNumber( m.begin(), m.end());
+        std::cout << BLUE "successfuly added " << std::abs(std::distance(m.begin(), m.end())) <<  " Elements " RESET << std::endl;
     } catch ( std::exception& e ) {
         std::cout << e.what() << std::endl; 
     }
@@ -84,19 +87,17 @@ int main( void )
 
     std::cout << "\n---- TEST #2 -----" << std::endl;
 
-    Span span(12);
+    Span span(10000);
 
     std::cout << "span: " << span << std::endl;
-    testAddWithRange(span , 12);
+    testAddWithRange(span , 10000);
     std::cout << "span: " << span << std::endl;
 
     testLongestSpan(span);
     testShortestSpan(span);
 
-
         // std::cout << "Longest span: " << span.longestSpan() << std::endl;
         // std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
-        
 
     return 0;
 }
