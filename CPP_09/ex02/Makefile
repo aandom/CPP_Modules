@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/19 10:30:10 by aandom            #+#    #+#              #
-#    Updated: 2023/10/19 10:30:10 by aandom           ###   ########.fr        #
+#    Created: 2023/10/23 09:09:32 by aandom            #+#    #+#              #
+#    Updated: 2023/10/23 09:09:32 by aandom           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = btc
+NAME = PmergeMe
 
-SRC = BitcoinExchange.cpp main.cpp
+SRC = PmergeMe.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++ -g3
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
