@@ -11,3 +11,19 @@
 /* ************************************************************************** */
 
 # include "RPN.hpp"
+
+
+int main(int ac, char **av){
+    if (ac != 2){
+        std::cout << "Error: Invalid Number of Argument" << std::endl;
+        return (1);
+    }
+
+    try {
+        int res = RPN::computeRPN(av[1]);
+        std::cout << "Result: " << res << '\n';
+    } catch (std::exception &e) {
+        std::cerr << "Exception: " << e.what() << '\n';
+    }
+    return (0);
+}

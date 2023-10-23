@@ -60,20 +60,17 @@ time_t  extractDate(std::string inputdate) {
     }
 
     int year = std::atoi( splitedDate[0].c_str() );
-	if ( splitedDate[0].empty() || year < 0 || year > 2050 )
-	{
+	if ( splitedDate[0].empty() || year < 0 || year > 2050 ) {
 		throw std::out_of_range( inputdate + ": invalid date" );
 	}
 
     int month = std::atoi( splitedDate[1].c_str() );
-	if ( splitedDate[1].empty() || month < 0 || month > 12 )
-	{
+	if ( splitedDate[1].empty() || month < 0 || month > 12 ) {
 		throw std::out_of_range( inputdate + ": invalid date" );
 	}
 
     int day = std::atoi( splitedDate[2].c_str() );
-	if ( splitedDate[2].empty() || day < 0 || day > 31 )
-	{
+	if ( splitedDate[2].empty() || day < 0 || day > 31 ) {
 		throw std::out_of_range( inputdate + ": invalid date" );
 	}
 	
@@ -115,20 +112,31 @@ std::string *splitstr(std::string str, std::string sep) {
     return (splited);
 }
 
+// void    validateStr(std::string * splited) {
+//     if (splited->empty())
+//         throw ( std::runtime_error( "Invalid data" ))
+//     for (size_t i = 0; i < 2; i++)
+//     {
+        
+//     }
+    
+    
+// }
+
 
 void BitcoinExchange::parseInput() {
     std::fstream myfile;
     myfile.open("./data.csv", std::fstream::in);
     if (myfile.fail())
         throw ( std::runtime_error( "Couldn't open data file" ) );
-    
     std::string line;
     std::string *splited;
     std::getline(myfile, line);
+    // check if the first line is valid
     while (std::getline(myfile, line)) {
         splited = splitstr(line, ",");
-        if(splited->empty()) {
-            std::cout << "invalid date_1" << std::endl;
+        if(splited[0].empty() || splited[1].empty()) {
+             throw ( std::runtime_error( "Invalid data" ) );
             exit(1);
         }
         time_t date = extractDate(splited[0]);
@@ -191,23 +199,6 @@ void    BitcoinExchange::computeExhange() {
         // this->insertToMap(date, value);
     }
 }
-
-
-
-// std::ostream &	operator<<(std::ostream &os, std::map<long, double>  &obj)
-// {
-//     std::cout << "[ ";
-//     for (std::map<long, double>::const_iterator it = obj.begin();
-// 			it != obj.end(); ++it)
-// 		std::cout <<it->first << " " << it->second << std::endl;
-//     std::cout << "]";
-//     // for (const auto& pair : obj) {
-//     //     os << pair.first << ": " << pair.second << std::endl;
-//     // }
-//     return (os);
-// }
-
-
 
 std::ostream& operator<<(std::ostream& os, std::map<long, double>& obj) {
     os << "[ ";

@@ -18,10 +18,12 @@
 # include <string>
 # include <iostream>
 
+typedef int (*m_func)(const int & , const int & );
+
 class RPN
 {
     public:
-        int computeRPN(const std::string & input);
+        static int computeRPN(const std::string & input);
 
     private:
         RPN();
@@ -31,12 +33,13 @@ class RPN
         RPN & operator=(const RPN & src);
 
         static std::stack<int> _mystack;
-        static unsigned char ops[4] = {'+', '-', '*', '/'};
+        static unsigned char ops[4];
         
         static void getOperands(int &lhs, int &rhs);
         static void PushToken(int value);
 
-        static void Operate(unsigned char operator);
+        static void Operate(unsigned char opesign );
+        static  m_func oprations[4];
 
         static int computeSum(const int &lhs, const int &rhs);
         static int computeSub(const int &lhs, const int &rhs);
@@ -45,7 +48,7 @@ class RPN
 
 };
 
-typedef int (RPN::*m_func) (const int &, const int &);
+
 
 
 # endif

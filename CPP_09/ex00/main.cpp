@@ -19,4 +19,6 @@ int main(int ac, char **av){
     }
 
     BitcoinExchange bit(av[1]);
+
+    
 }
