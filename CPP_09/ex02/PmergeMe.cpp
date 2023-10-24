@@ -11,3 +11,16 @@
 /* ************************************************************************** */
 
 # include "PmergeMe.hpp"
+
+int  checkInt(std::string const & input) {
+    char *endptr;
+    long nbr = std::strtol(input.c_str(), &endptr, 10);
+
+    if (endptr == input.c_str() || *endptr != '\0')
+        return (false);
+    if (nbr > std::numeric_limits<int>::max() || nbr < 0) {
+        return (-1);
+    }
+    int intform = static_cast<int>(nbr);
+    return (intform);
+}
