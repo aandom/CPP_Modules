@@ -46,23 +46,23 @@ int main (int ac, char **av) {
         mydeque.push_back(num);
     }
 
-    std::cout << "Before:\t";
+    std::cout << "Before\t: ";
     printContainer(myvect);
     PmergeMe::pmergeSort(myvect);
-    std::cout << "After:\t";
+    std::cout << "After\t: ";
     printContainer(myvect);
 
-    std::cout << "Before:\t";
-    printContainer(mylist);
-    PmergeMe::pmergeSort(mylist);
-    std::cout << "After:\t";
-    printContainer(mylist);
+    // std::cout << "Before\t: ";
+    // printContainer(mylist);
+    // PmergeMe::pmergeSort(mylist);
+    // std::cout << "After:\t";
+    // printContainer(mylist);
 
-    std::cout << "Before:\t";
-    printContainer(mydeque);
-    PmergeMe::pmergeSort(mydeque);
-    std::cout << "After:\t";
-    printContainer(mydeque);
+    // std::cout << "Before\t: ";
+    // printContainer(mydeque);
+    // PmergeMe::pmergeSort(mydeque);
+    // std::cout << "After:\t";
+    // printContainer(mydeque);
     
     
 }

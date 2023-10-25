@@ -19,6 +19,7 @@
 # include <list>
 # include <iostream>
 # include <limits>
+# include <exception>
 
 class PmergeMe
 {
@@ -36,10 +37,62 @@ class PmergeMe
 
         PmergeMe & operator=(const PmergeMe & src);
 
+        static  const int minSize = 8; 
 
-        // std::list<int>      _mylist;
-        // std::vector<int>    _myvect;
-        // static  const int minSize = 8; 
+        template<typename T>
+        static void insertionSort(T& container) {
+            int tmp;
+            typename T::iterator it;
+            typename T::iterator prev;
+            typename T::iterator j;
+
+            for (it = container.begin(); it != container.end(); ++it) {
+                tmp = *it;
+                j = it;
+                while (j != container.begin()) {
+                    prev = j;
+                    --prev;
+                    if (tmp < *prev) {
+                        *j = *prev;
+                        --j;
+                    }
+                    else
+                        break;
+                }
+                *j = tmp;
+          }
+        }
+
+        template <typename T>
+        static void mergeInsertionSort(T& container)
+        {
+            size_t	len = container.size();
+
+            if (len > minSize)
+            {
+                typename T::iterator begin = container.begin();
+                typename T::iterator midPoint = container.begin();
+                std::advance(midPoint, container.size() / 2);
+                typename T::iterator end = container.end();
+
+                T leftBranch(begin, midPoint);
+                T rightBranch(midPoint, end);
+
+                mergeInsertionSort(leftBranch);
+                mergeInsertionSort(rightBranch);
+                std::merge(leftBranch.begin(), leftBranch.end(), rightBranch.begin(), rightBranch.end(), container.begin());
+            }
+            else
+                insertionSort(container);
+        }
+};
+
+int  checkInt(std::string const & input);
+
+# endif
+
+
+
 
         // template <typename T>
         // static void    insertionSort(T& container, int start, int end) {
@@ -124,74 +177,3 @@ class PmergeMe
         //         }
         //     }
         // }
-
-        template<typename T>
-        static void insertionSort(T& m)
-        {
-            // int temp;
-            typename T::iterator it;
-            typename T::iterator prev;
-            typename T::iterator j;
-            // for (it = m.begin(); it != m.end(); ++it)
-            // {
-            //     temp = *it;
-            //     j = it;
-            //     while (j != m.begin()) {
-            //         prev = j;
-            //         --prev;
-            //         if (*prev > temp) {
-            //             *j = *prev;
-            //             --j;
-            //         }
-            //         else
-            //             break;
-            //     }
-            //     *j = temp;
-            // }
-
-            for (it = m.begin(); it != m.end(); ++it) {
-                int tmp = *it;
-                j = it;
-                while (j != m.begin()) {
-                    prev = j;
-                    --prev;
-                    if (tmp < *prev) {
-                        *j = *prev;
-                        --j;
-                    }
-                    else
-                        break;
-                }
-                *j = tmp;
-          }
-        }
-
-        template <typename T>
-        static void mergeInsertionSort(T& m)
-        {
-            size_t	len = m.size();
-            static  const int minSize = 8;
-
-            if (len > minSize)
-            {
-                typename T::iterator begin = m.begin();
-                typename T::iterator midPoint = m.begin();
-                std::advance(midPoint, m.size() / 2);
-                typename T::iterator end = m.end();
-                T left(begin, midPoint);
-                T right(midPoint, end);
-                if (left.size() > 1)
-                    mergeInsertionSort(left);
-                if (right.size() > 1)
-                    mergeInsertionSort(right);
-                std::merge(left.begin(), left.end(), right.begin(), right.end(), m.begin());
-            }
-            else
-                insertionSort(m);
-        }
-};
-
-int  checkInt(std::string const & input);
-
-# endif
-

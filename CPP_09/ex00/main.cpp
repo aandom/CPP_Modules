@@ -17,8 +17,10 @@ int main(int ac, char **av){
         std::cout << "Error: cloud not open file." << std::endl;
         return (1);
     }
-
-    BitcoinExchange bit(av[1]);
-
+    try { 
+        BitcoinExchange bit(av[1]);
+    } catch (std::exception &e) {
+        std::cerr << "Exception: " << e.what() << '\n';
+    }
     
 }

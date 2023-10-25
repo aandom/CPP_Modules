@@ -124,6 +124,18 @@ std::string *splitstr(std::string str, std::string sep) {
 // }
 
 
+static bool    checkInput(std::string const & str) {
+
+    if (str.empty() || str.length() == 0)
+        return (false);
+    for (std::string::const_iterator it = str.begin(); it != str.end() ; it++) {
+        if (!std::isdigit(*it))
+            return (false);
+    }
+    return (true);
+}
+
+
 void BitcoinExchange::parseInput() {
     std::fstream myfile;
     myfile.open("./data.csv", std::fstream::in);
@@ -132,7 +144,12 @@ void BitcoinExchange::parseInput() {
     std::string line;
     std::string *splited;
     std::getline(myfile, line);
-    // check if the first line is valid
+    splited = splitstr(line, ",");
+    if (splited[0] != "date" || splited[1] != "exchange_rate") {
+        delete [] splited;
+        throw (std::runtime_error( "Invalid data.csv header."));
+    }
+    delete [] splited;
     while (std::getline(myfile, line)) {
         splited = splitstr(line, ",");
         if(splited[0].empty() || splited[1].empty()) {

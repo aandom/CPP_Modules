@@ -22,6 +22,7 @@
 # include <time.h>  
 # include <limits>
 # include <ctime>
+# include <exception>
 
 class BitcoinExchange
 {

@@ -25,6 +25,9 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+random: 
+	./$(NAME) `jot -r 3000 1 1000 | tr '\n' ' '`
+
 clean: 
 		rm -f $(OBJ)
 
