@@ -30,7 +30,7 @@ int main (int ac, char **av) {
     }
 
     std::vector<int> myvect;
-    // std::list<int> mylist;
+    std::list<int> mylist;
     std::deque<int> mydeque;
 
     int num;
@@ -42,7 +42,7 @@ int main (int ac, char **av) {
             return (0);
         }
         myvect.push_back(num);
-        // mylist.push_back(num);
+        mylist.push_back(num);
         mydeque.push_back(num);
     }
 
@@ -52,11 +52,11 @@ int main (int ac, char **av) {
     std::cout << "After:\t";
     printContainer(myvect);
 
-    // std::cout << "Before:\t";
-    // printContainer(mylist);
-    // PmergeMe::pmergeSort(mylist);
-    // std::cout << "After:\t";
-    // printContainer(mylist);
+    std::cout << "Before:\t";
+    printContainer(mylist);
+    PmergeMe::pmergeSort(mylist);
+    std::cout << "After:\t";
+    printContainer(mylist);
 
     std::cout << "Before:\t";
     printContainer(mydeque);
