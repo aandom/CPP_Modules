@@ -23,6 +23,9 @@
 # include <limits>
 # include <ctime>
 # include <exception>
+#include <iomanip>
+#include <iostream>
+#include <string>
 
 class BitcoinExchange
 {
