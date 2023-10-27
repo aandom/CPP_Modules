@@ -20,6 +20,9 @@
 # include <iostream>
 # include <algorithm>
 # include <iterator>
+# include <sstream>
+# include <string>
+# include <climits>
 
 #define RESET "\e[0m"
 #define RED "\e[31m"

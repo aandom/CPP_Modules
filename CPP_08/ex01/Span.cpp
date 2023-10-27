@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:51 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/27 16:18:53 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:59:45 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ void    Span::addNumber(std::list<int>::const_iterator itbegin, std::list<int>::
     if (this->_arrsize <= this->_array.size())
          throw std::out_of_range( YELLOW "Cannot add a number: list is full" RESET );
     if (std::abs(std::distance(itbegin, itend)) > (int) (this->_arrsize - this->_array.size())) {
-        std::string  errmsg = YELLOW "Error: Insufficient space to hold " + std::to_string(std::abs(std::distance(itbegin, itend))) + " more elements" RESET;
+        unsigned int res =  std::abs(std::distance(itbegin, itend));
+        std::stringstream   ss;
+        ss << res;
+        std::string str;
+        ss >> str;
+        std::string  errmsg = YELLOW "Error: Insufficient space to hold " + str + " more elements" RESET;
         throw std::out_of_range( errmsg );
     }
     if (this->_arrsize > this->_array.size()) 

@@ -6,13 +6,11 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:18 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/27 16:17:32 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:58:03 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Span.hpp"
-# include <iostream>
-# include <limits>
 
 #include "Span.hpp"
 
@@ -51,7 +49,8 @@ void    testAddWithRange(Span & sp, unsigned int range) {
 
     std::list<int> m (range);
 
-    std::srand ( unsigned ( std::time(0) ) );
+    // std::srand ( unsigned ( std::time(0) ) );
+    std::srand ( unsigned ( time(0) ) );
     std::generate (m.begin(), m.end(), RandomNumber);
 
     try {
