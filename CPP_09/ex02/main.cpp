@@ -22,6 +22,23 @@ void printContainer(const T &container)
 	std::cout << std::endl;
 }
 
+template <typename T>
+double    sortContainer(T& Container) {
+    std::cout << "Before\t: ";
+    printContainer(Container);
+    clock_t timeStart = clock();
+    PmergeMe::pmergeSort(Container);
+    clock_t timeEnd = clock();
+    std::cout << "After\t: ";
+    printContainer(Container);
+
+    double time = static_cast<double> ((timeEnd - timeStart)) / CLOCKS_PER_SEC;
+    return (time);
+
+    // std::cout << "Time to process a range of " << Container.size() << " elements with std::"
+    //           << type << "<int> \t: " << time << "\tus" << std::endl;
+}
+
 
 int main (int ac, char **av) {
     if (ac < 2) {
@@ -33,7 +50,7 @@ int main (int ac, char **av) {
     std::list<int> mylist;
     std::deque<int> mydeque;
 
-    int num;
+    int     num;
     for (int i = 1; i < ac; i++)
     {
         num = checkInt(av[i]);
@@ -43,26 +60,15 @@ int main (int ac, char **av) {
         }
         myvect.push_back(num);
         mylist.push_back(num);
-        mydeque.push_back(num);
+        // mydeque.push_back(num);
     }
 
-    std::cout << "Before\t: ";
-    printContainer(myvect);
-    PmergeMe::pmergeSort(myvect);
-    std::cout << "After\t: ";
-    printContainer(myvect);
+    double vectTime = sortContainer(myvect);
+    double listTime = sortContainer(mylist);
+    // double dequeTime = sortContainer(mydeque);
 
-    // std::cout << "Before\t: ";
-    // printContainer(mylist);
-    // PmergeMe::pmergeSort(mylist);
-    // std::cout << "After:\t";
-    // printContainer(mylist);
-
-    // std::cout << "Before\t: ";
-    // printContainer(mydeque);
-    // PmergeMe::pmergeSort(mydeque);
-    // std::cout << "After:\t";
-    // printContainer(mydeque);
-    
-    
+    std::cout << std::endl;
+    std::cout << "Time to process a range of " << myvect.size() << " elements with std::vector<int> \t: " << vectTime << "\tus" << std::endl;
+    std::cout << "Time to process a range of " << mylist.size() << " elements with std::list<int> \t: " << listTime << "\tus" << std::endl;
+    // std::cout << "Time to process a range of " << mydeque.size() << " elements with std::deque<int> \t: " << dequeTime << "\tus" << std::endl;
 }

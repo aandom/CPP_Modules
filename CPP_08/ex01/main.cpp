@@ -6,7 +6,7 @@
 /*   By: aandom <aandom@student.abudhabi42.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:19:18 by aandom            #+#    #+#             */
-/*   Updated: 2023/10/20 16:22:29 by aandom           ###   ########.fr       */
+/*   Updated: 2023/10/27 16:17:32 by aandom           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,9 @@ void    testaddNum(Span & sp, int num) {
 }
 
 
-int RandomNumber () { return (std::rand()% INT_MAX); }
+int RandomNumber ( ) { return (std::rand()% INT_MAX);}
 
 void    testAddWithRange(Span & sp, unsigned int range) {
-
 
     std::list<int> m (range);
 
@@ -64,13 +63,8 @@ void    testAddWithRange(Span & sp, unsigned int range) {
 }
 
 
-
-
-
 int main( void )
 {
-    std::cout << "---- TEST #1 -----" << std::endl;
-
     Span sp = Span( 5 );
 
     testaddNum(sp, -9);
@@ -85,7 +79,7 @@ int main( void )
     testLongestSpan(sp);
     testShortestSpan(sp);
 
-    std::cout << "\n---- TEST #2 -----" << std::endl;
+    std::cout << std::endl;
 
     Span span(10000);
 
@@ -93,11 +87,14 @@ int main( void )
     testAddWithRange(span , 10000);
     std::cout << "span: " << span << std::endl;
 
+    // Span span(10);
+
+    // std::cout << "span: " << span << std::endl;
+    // testAddWithRange(span , 10);
+    // std::cout << "span: " << span << std::endl;
+
     testLongestSpan(span);
     testShortestSpan(span);
-
-        // std::cout << "Longest span: " << span.longestSpan() << std::endl;
-        // std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
 
     return 0;
 }

@@ -29,7 +29,7 @@ void    tryfind(T& arr, int num) {
     try
     {
         std::cout << *easyfind( arr, num) << std::endl;
-        std::cout << "\tElement found" << std::endl;
+        std::cout << "\tElement found\n" << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -63,7 +63,10 @@ int main(void) {
 
     // try
     // {
-    //     std::cout << *easyfind( vect, 7) << std::endl;
+    //     std::cout << "Trying to find [ " << "42" << " ] in side [ ";
+    //     std::for_each(vect1.begin(), vect1.end(), printElement<std::string>);
+    //     std::cout << "]" << std::endl;
+    //     std::cout << *easyfind( vect1, "42") << std::endl;
     //     std::cout << "Element found" << std::endl;
     // }
     // catch(const std::exception& e)

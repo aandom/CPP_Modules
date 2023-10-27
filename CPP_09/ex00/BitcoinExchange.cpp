@@ -72,12 +72,12 @@ time_t  extractDate(std::string inputdate) {
 	}
 
 	int month = std::atoi( splitedDate[1].c_str() );
-	if ( splitedDate[1].empty() || month < 0 || month > 12 ) {
+	if ( splitedDate[1].empty() || month <= 0 || month > 12 ) {
 		return (-1);
 	}
 
 	int day = std::atoi( splitedDate[2].c_str() );
-	if ( splitedDate[2].empty() || day < 0 || day > 31 ) {
+	if ( splitedDate[2].empty() || day <= 0 || day > 31 ) {
 		return (-1);
 	}
 	if (month == 2 && day > 29  ) {

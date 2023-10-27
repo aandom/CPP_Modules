@@ -20,14 +20,17 @@
 # include <iostream>
 # include <limits>
 # include <exception>
+# include <time.h>   
 
 class PmergeMe
 {
     public:
         template <typename T>
         static void    pmergeSort(T& C) {
-            // mergeInsertionSort(C, 0, C.size() - 1);
-            mergeInsertionSort(C);
+            if (!checkIfSorted(C)) {
+                // mergeInsertionSort(C, 0, C.size() - 1);
+                mergeInsertionSort(C);
+            }
         }
 
     private:
@@ -37,7 +40,21 @@ class PmergeMe
 
         PmergeMe & operator=(const PmergeMe & src);
 
-        static  const int minSize = 8; 
+        static  const int minSize = 8;
+        template <typename T>
+        static bool checkIfSorted(const T &container)
+        {
+            typedef typename T::const_iterator const_iterator;
+            const_iterator tmp = container.begin();
+
+            for (const_iterator it = container.begin(); it != container.end(); ++it) {
+                tmp++;
+                if (tmp != container.end() && *tmp < *it)
+                    return (false);
+            }
+            return (true);
+        }
+
 
         template<typename T>
         static void insertionSort(T& container) {
@@ -85,6 +102,7 @@ class PmergeMe
             else
                 insertionSort(container);
         }
+
 };
 
 int  checkInt(std::string const & input);
@@ -94,86 +112,107 @@ int  checkInt(std::string const & input);
 
 
 
-        // template <typename T>
-        // static void    insertionSort(T& container, int start, int end) {
-        //       for (int i = start + 1; i < end; i++) {
-        //         int tmp = container[i];
-        //         int j = i - 1;
+    // template <typename T>
+    // static void    insertionSortSecond(T& container, int start, int end) {
+        // int tmp2;
+        // for (int i = start; i <= end; ++i) {
+        //     int tmp = container[i];
+        //     int j = i;
 
-        //         // Compare tmp with each element on the left of it until an element smaller than
-        //         // it is found.
-        //         // For descending order, change tmp<array[j] to tmp>array[j].
-        //         while (tmp < container[j] && j >= start) {
-        //             container[j + 1] = container[j];
+        //     while (j != start) {
+        //         tmp2 = j;
+        //         --tmp2;
+        //         if (tmp < container[tmp2]) {
+        //             container[j] = container[tmp2];
         //             --j;
         //         }
-        //         container[j + 1] = tmp;
-        //       }
-        // }
-
-        // template <typename T>
-        // static void    mergeSort(T& container, int start, int midPoint, int end) {
-        //     int i, j, k;
-        //     int leftLen = midPoint - start + 1;
-        //     int rightLen = end - midPoint;
-
-        //     // Creating two temp branches of type T to store left and right braches.
-        //     T leftCont(leftLen), rightCont(rightLen);
-
-        //     // Copying the data from the actual Container to left and right temp branches.
-        //     for (int a = 0; a < leftLen; a++) {
-        //         leftCont[a] = container[start + a];
+        //         else
+        //             break;
         //     }
-        //     for (int a = 0; a < rightLen; a++) {
-        //         rightCont[a] = container[midPoint + 1 + a];
-        //     }
+        //     container[j] = tmp;
+        //   }
+    // }
 
-        //     i = 0; 
-        //     j = 0; 
-        //     k = start;    // Starting index of merged subcontaineray.
+    //    template <typename T>
+    //     static void    insertionSort(T& container, int start, int end) {
+    //           for (int i = start + 1; i <= end; i++) {
+    //             int tmp = container[i];
+    //             int j = i - 1;
 
-        //     while (i < leftLen && j < rightLen) {
-        //         // Checking and placing the smaller number of both temp branches into the main container.
-        //         if (leftCont[i] <= rightCont[j]) {
-        //             container[k] = leftCont[i];
-        //             i++;
-        //         } else {
-        //             container[k] = rightCont[j];
-        //             j++;
-        //         }
-        //         k++;
-        //     }
+    //             // Compare tmp with each element on the left of it until an element smaller than
+    //             // it is found.
+    //             while (j >= start && tmp < container[j]) {
+    //                 container[j + 1] = container[j];
+    //                 --j;
+    //             }
+    //             container[j + 1] = tmp;
+    //           }
+    //     }
 
-        //     // copying the remaining elements of the temp branches to the main container.
-        //     while (i < leftLen) {
-        //         container[k] = leftCont[i];
-        //         k++;
-        //         i++;
-        //     }
-        //     while (j < rightLen) {
-        //         container[k] = rightCont[j];
-        //         k++;
-        //         j++;
-        //     }
-        // }
+    //     template <typename T>
+    //     static void    mergeSort(T& container, int start, int midPoint, int end) {
+    //         int i, j, k;
+    //         int leftLen = midPoint - start + 1;
+    //         int rightLen = end - midPoint;
 
-        // template <typename T>
-        // static void    mergeInsertionSort(T& container, int start, int end) {
-        //     if (start < end) {
-        //         if (end - start > minSize) {
-        //             insertionSort(container, start, end);
-        //         }
-        //         else {
-        //             int midPoint = start + (( end - start) / 2);
-        //             // Calling the function mergeSort() recursively and breaking down the given array into smaller sub arrays.
-        //             // mergeSort(arr, low, mid);
-        //             // mergeSort(arr, mid + 1, end);
-        //             mergeInsertionSort(container, start, midPoint);
-        //             mergeInsertionSort(container, midPoint + 1, end);
+    //         // Creating two temp branches of type T to store left and right braches.
+    //         T leftCont(leftLen), rightCont(rightLen);
 
-        //             // Calling the merge() function to merge the sorted subarrays into the main array.
-        //             // merge(arr, low, mid, high);
-        //             mergeSort(container, start, midPoint, end);  
-        //         }
-        //     }
-        // }
+    //         // Copying the data from the actual Container to left and right temp branches.
+    //         for (int a = 0; a < leftLen; a++) {
+    //             leftCont[a] = container[start + a];
+    //         }
+    //         for (int a = 0; a < rightLen; a++) {
+    //             rightCont[a] = container[midPoint + 1 + a];
+    //         }
+
+    //         i = 0; 
+    //         j = 0; 
+    //         k = start;    // Starting index of merged container.
+
+    //         while (i < leftLen && j < rightLen) {
+    //             // Checking and placing the smaller number of both temp branches into the main container.
+    //             if (leftCont[i] <= rightCont[j]) {
+    //                 container[k] = leftCont[i];
+    //                 i++;
+    //             } else {
+    //                 container[k] = rightCont[j];
+    //                 j++;
+    //             }
+    //             k++;
+    //         }
+
+    //         // copying the remaining elements of the temp branches to the main container.
+    //         while (i < leftLen) {
+    //             container[k] = leftCont[i];
+    //             k++;
+    //             i++;
+    //         }
+    //         while (j < rightLen) {
+    //             container[k] = rightCont[j];
+    //             k++;
+    //             j++;
+    //         }
+    //     }
+
+    //     template <typename T>
+    //     static void    mergeInsertionSort(T& container, int start, int end) {
+
+    //         if (start < end) {
+    //             if (end - start > minSize) {
+    //                 int midPoint = start + (( end - start) / 2);
+    //                 // Calling the function mergeSort() recursively and breaking down the given array into smaller sub arrays.
+    //                 // mergeSort(arr, low, mid);
+    //                 // mergeSort(arr, mid + 1, end);
+    //                 mergeInsertionSort(container, start, midPoint);
+    //                 mergeInsertionSort(container, midPoint + 1, end);
+
+    //                 // Calling the merge() function to merge the sorted subarrays into the main array.
+    //                 // merge(arr, low, mid, high);
+    //                 mergeSort(container, start, midPoint, end);  
+    //             }
+    //             else {
+    //                 insertionSort(container, start, end);
+    //             }
+    //         }
+    //     }
