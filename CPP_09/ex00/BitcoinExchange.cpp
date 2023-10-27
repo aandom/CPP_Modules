@@ -13,7 +13,7 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(std::string infile) : _infile(infile) {
-	// parseInput();
+	parseInput();
 	// std::cout << this->_data << std::endl;
 	computeExhange();
 }
@@ -99,21 +99,34 @@ time_t  extractDate(std::string inputdate) {
 	return (date);
 }
 
-std::string trim_sp(std::string str) {
-    std::string is_space = " \t\n\r\v\f";
-    size_t start;
-    size_t end;
+const std::string WHITESPACE = " \n\r\t\f\v";
+ 
+std::string leftTrim(const std::string &s)
+{
+    size_t start = s.find_first_not_of(WHITESPACE);
+    return (start == std::string::npos) ? "" : s.substr(start);
+}
+ 
+std::string rightTrim(const std::string &s)
+{
+    size_t end = s.find_last_not_of(WHITESPACE);
+    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
 
-    start = str.find_first_not_of(is_space);
-    end = str.find_last_not_of(is_space);
-    if (start == end)
-        return (str);
-    return (str.substr(start, end - start + 1));
+std::string trim_sp(std::string str) {
+
+	std::string trimed = rightTrim(leftTrim(str));
+
+	std::string whitespaces (" \t\f\v\n\r");
+	return (trimed);
+	
 }
 
 bool allDigits(std::string str) {
     for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
-		if (!std::isdigit(*it) && *it != '.') {
+		if (it == str.begin() && *it == '-')
+			continue;
+		else if (!std::isdigit(*it) && *it != '.') {
 			return (false);
 		}
 	}
@@ -124,19 +137,16 @@ bool allDigits(std::string str) {
 static bool checkValue(std::string const & str) {
 	if (str.empty() || str.length() == 0)
 		return (false);
-	// std::cout << "so far so good -->1 [" << str << "]" << std::endl;
 	std::string trimed = trim_sp(str);
 	int dotcount = std::count(str.begin(), str.end(), '.');
 	if ((dotcount > 1) || !allDigits(trimed))
 		return (false);
-	// std::cout << "so far so good -->2 [" << str << "]" << std::endl;
 	return (true);
 }
 
 
 
 double  extractValue(std::string inputval) {
-
 	if (!checkValue(inputval))
 		return (-2);
 	double val = std::strtod(inputval.c_str(), NULL);
@@ -162,34 +172,9 @@ std::string *splitstr(std::string str, std::string sep) {
 		return new std::string("");
 	}
 	splited[0] = newstr.substr(0, sepidx);
-	splited[1] = newstr.substr(sepidx + sep.length(),  newstr.end() - newstr.begin());
-	// std::cout << "1st : [" << splited[0] << "]"<<std::endl;
-	// std::cout << "2nd : [" << splited[1] << "]"<<std::endl;
+	splited[1] = newstr.substr(sepidx + 1,  newstr.length());
 	return (splited);
 }
-
-// void    validateStr(std::string * splited) {
-//     if (splited->empty())
-//         throw ( std::runtime_error( "Invalid data" ))
-//     for (size_t i = 0; i < 2; i++)
-//     {
-		
-//     }
-	
-	
-// }
-
-
-// static bool    checkInput(std::string const & str) {
-
-//     if (str.empty() || str.length() == 0)
-//         return (false);
-//     for (std::string::const_iterator it = str.begin(); it != str.end() ; it++) {
-//         if (!std::isdigit(*it))
-//             return (false);
-//     }
-//     return (true);
-// }
 
 
 void BitcoinExchange::parseInput() {
@@ -263,15 +248,12 @@ void    BitcoinExchange::computeExhange() {
 	while (std::getline(inputfile, line)) {
 		splited = splitstr(line, "|");
 		if(splited->empty()) {
-			std::cout << "invalid date_1" << std::endl;
+			std::cout << "Error: bad input => " << line << std::endl;
 		}
 		else {
-			// time_t date = extractDate(splited[0]);
-			// double value = extractValue(splited[1]);
 
 			time_t date = extractDate(splited[0]);
 			double value = extractValue(splited[1]);
-			// std::cout << "date [" << date << "] value [" << value << "]" << std::endl;
 			if (date != -1 && value >= 0) {
 				time_t key = findNearestDate(date);
 				struct tm* timeinfo = localtime(&date);
@@ -282,23 +264,19 @@ void    BitcoinExchange::computeExhange() {
 				std::cout << buffer << " -> ";
 				std::cout << std::fixed;
 				std::cout.precision( 2 );
-				std::cout << _data[key] << " * " << value <<  std::endl;
+				std::cout << _data[key] * value <<  std::endl;
 			}
-			else if (date == -1) {
+			else if (date == -1 || value == -2) {
 				std::cout << "Error: bad input => " << splited[0] << std::endl;
-				// delete [] splited;
 			}
-			else if (value < -2) {
+			else if (value == -1) {
 				std::cout << "Error: not a positive number. => " << splited[1] << std::endl;
-				// delete [] splited;
 			}
-			else if (value < -3) {
+			else if (value == -3) {
 				std::cout << "Error: too large a number. => " << splited[1] << std::endl;
-				// delete [] splited;
 			}
-			// delete [] splited;
+			delete [] splited;
 		}
-		// this->insertToMap(date, value);
 	}
 }
 
