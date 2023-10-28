@@ -14,7 +14,7 @@ NAME = RPN
 
 SRC = RPN.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = c++ -g3
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp

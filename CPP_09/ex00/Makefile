@@ -14,7 +14,7 @@ NAME = btc
 
 SRC = BitcoinExchange.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-CC = c++ -g3
+CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp
@@ -24,6 +24,9 @@ $(NAME): $(OBJ)
 		 $(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
 all: $(NAME)
+
+leaks:
+	valgrind --leak-check=full --show-leak-kinds=all ./btc input.txt
 
 clean: 
 		rm -f $(OBJ)

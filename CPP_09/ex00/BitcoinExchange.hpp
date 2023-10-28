@@ -23,9 +23,17 @@
 # include <limits>
 # include <ctime>
 # include <exception>
-#include <iomanip>
-#include <iostream>
-#include <string>
+# include <iomanip>
+# include <iostream>
+# include <string>
+
+#define RESET "\e[0m"
+#define RED "\e[31m"
+#define GREEN "\e[32m"
+#define YELLOW "\e[33m"
+#define BLUE "\e[34m"
+#define PURPLE "\e[35m"
+#define CYAN "\e[36m"
 
 class BitcoinExchange
 {
@@ -35,6 +43,7 @@ class BitcoinExchange
         ~BitcoinExchange();
 
         BitcoinExchange & operator=(BitcoinExchange const & src);
+        static const std::string WHITESPACE;
         
     private:
         BitcoinExchange();
@@ -45,6 +54,7 @@ class BitcoinExchange
         void    insertToMap(time_t date, double value);
         void    computeExhange();
         time_t  findNearestDate(time_t date);
+        void	displayeCalculatedRate(time_t date, double value);
 
         /* data */
 };

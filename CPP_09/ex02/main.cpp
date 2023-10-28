@@ -17,8 +17,10 @@ void printContainer(const T &container)
 {
 	typedef typename T::const_iterator const_iterator;
 
+    std::cout << "[ ";
 	for (const_iterator it = container.begin(); it != container.end(); ++it)
 		std::cout << *it << " ";
+    std::cout << "]";
 	std::cout << std::endl;
 }
 
