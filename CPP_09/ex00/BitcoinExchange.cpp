@@ -46,8 +46,8 @@ std::string *splitdate(std::string str, std::string sep) {
 		// return (0);
 	}
 	splited[0] = str.substr(0, sepidx1);
-	splited[1] = str.substr(sepidx1 + sep.length(), sepidx2);
-	splited[2] = str.substr(sepidx2 + sep.length(), str.length());
+	splited[1] = str.substr(sepidx1 + sep.length(), sepidx2 - sepidx1 - 1);
+	splited[2] = str.substr(sepidx2 + sep.length(), str.length() - sepidx2);
 	return (splited);
 }
 
@@ -74,8 +74,52 @@ bool	isValidDate(int day, int month, int year) {
 	return (true);
 }
 
-time_t  extractDate(std::string inputdate) {
+static std::string leftTrim(const std::string &s) {
+    size_t start = s.find_first_not_of(WHITESPACE);
+    return (start == std::string::npos) ? "" : s.substr(start);
+}
+ 
+static std::string rightTrim(const std::string &s) {
+    size_t end = s.find_last_not_of(WHITESPACE);
+    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
 
+static std::string trimSpace(std::string str) {
+	return (rightTrim(leftTrim(str)));	
+}
+
+static bool allDigits(std::string str) {
+    for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+		if (it == str.begin() && *it == '-')
+			continue;
+		else if (!std::isdigit(*it) && *it != '.') {
+			return (false);
+		}
+	}
+	return (true); 
+}
+
+int checkDatetwo(std::string inputdate) {
+	std::string *splitedDate = splitdate(inputdate, "-");
+
+	if (!allDigits(trimSpace(splitedDate[0]))) {
+		return (delete [] splitedDate, 0);
+	}
+
+	if ((!allDigits(trimSpace(splitedDate[1])))) {
+		return (delete [] splitedDate, 0);
+	}
+
+	if (!allDigits(trimSpace(splitedDate[2])))  {
+		return (delete [] splitedDate, 0);
+	}
+	
+	return (delete [] splitedDate, 1);
+}
+
+time_t  extractDate(std::string inputdate) {
+	if (!checkDatetwo(inputdate))
+		return (-1);
 	std::string *splitedDate = splitdate(inputdate, "-");
 	if (splitedDate->empty()) {
 		return (delete splitedDate, -1);
@@ -107,32 +151,6 @@ time_t  extractDate(std::string inputdate) {
 
 	return (delete [] splitedDate, mktime( &timeinfo ));
 }
- 
-static std::string leftTrim(const std::string &s) {
-    size_t start = s.find_first_not_of(WHITESPACE);
-    return (start == std::string::npos) ? "" : s.substr(start);
-}
- 
-static std::string rightTrim(const std::string &s) {
-    size_t end = s.find_last_not_of(WHITESPACE);
-    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
-}
-
-static std::string trimSpace(std::string str) {
-	return (rightTrim(leftTrim(str)));	
-}
-
-static bool allDigits(std::string str) {
-    for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
-		if (it == str.begin() && *it == '-')
-			continue;
-		else if (!std::isdigit(*it) && *it != '.') {
-			return (false);
-		}
-	}
-	return (true); 
-}
-
 
 static bool checkValue(std::string const & str) {
 	if (str.empty() || str.length() == 0)
@@ -169,7 +187,7 @@ static std::string *splitstr(std::string str, std::string sep) {
 		return (0);
 	}
 	splited[0] = newstr.substr(0, sepidx);
-	splited[1] = newstr.substr(sepidx + 1,  newstr.length());
+	splited[1] = newstr.substr(sepidx + 1,  newstr.length() - sepidx - 1);
 	return (splited);
 }
 
@@ -267,7 +285,6 @@ void	BitcoinExchange::displayeCalculatedRate(time_t date, double value) {
 
 }
 
-
 void    BitcoinExchange::computeExhange() {
 	std::fstream	inputfile;
 	std::string		line;
@@ -286,7 +303,9 @@ void    BitcoinExchange::computeExhange() {
 		else {
 			time_t date = extractDate(splited[0]);
 			double value = extractValue(splited[1]);
-			if (date != -1 && value >= 0)
+			if (!checkDatetwo(splited[0]))
+				std::cout << YELLOW << "Error: bad input => " << splited[0] << RESET << std::endl;
+			else if (date != -1 && value >= 0)
 				displayeCalculatedRate(date, value);
 			else if (date == -1 || value == -2)
 				std::cout << YELLOW << "Error: bad input => " << splited[0] << RESET << std::endl;
