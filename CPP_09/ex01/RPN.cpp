@@ -16,8 +16,26 @@ std::stack<int> RPN::_mystack;
 unsigned char RPN::ops[] =  {'+', '-', '*', '/'};
 m_func  RPN::oprations[4] = {&RPN::computeSum, &RPN::computeSub, &RPN::computeMul, &RPN::computeDiv};
 
+static std::string leftTrim(const std::string &s) {
+    const std::string WHITESPACE = " \n\r\t\f\v";
+    size_t start = s.find_first_not_of(WHITESPACE);
+    return (start == std::string::npos) ? "" : s.substr(start);
+}
+ 
+static std::string rightTrim(const std::string &s) {
+    const std::string WHITESPACE = " \n\r\t\f\v";
+    size_t end = s.find_last_not_of(WHITESPACE);
+    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
+
+static std::string trimSpace(std::string str) {
+	return (rightTrim(leftTrim(str)));	
+}
 
 int RPN::computeRPN(const std::string & input) {
+    if ((trimSpace(input)).empty()) {
+        throw::std::runtime_error("Error empty Input");
+    }
 	for (std::string::const_iterator it = input.begin(); it != input.end(); ++it) {
 		if (std::isspace(*it))
 			continue;
