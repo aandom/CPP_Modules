@@ -90,7 +90,9 @@ static std::string trimSpace(std::string str) {
 
 static bool allDigits(std::string str) {
     for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
-		if (it == str.begin() && *it == '-')
+		if (it == str.begin() && (*it == '-' || *it == '+'))
+			continue;
+		else if (it + 1 == str.end() && (*it == 'f'))
 			continue;
 		else if (!std::isdigit(*it) && *it != '.') {
 			return (false);
@@ -271,6 +273,10 @@ time_t  BitcoinExchange::findNearestDate(time_t date) {
 	if ( date < _data.begin()->first ) {
 		return ( _data.begin()->first );
 	}
+	// if (it != _data.end())
+	// {
+	// 	return (it->first);
+	// }
 
 	for ( int i = 0; it == _data.end(); i++ ) {
 		time_t newDate = date - i * 24 * 60 * 60;
@@ -315,9 +321,9 @@ void    BitcoinExchange::computeExhange() {
 		else {
 			time_t date = extractDate(splited[0]);
 			double value = extractValue(splited[1]);
-			if (!checkDatetwo(splited[0]))
-				std::cout << YELLOW << "Error: bad input => " << splited[0] << RESET << std::endl;
-			else if (date != -1 && value >= 0)
+			// if (!checkDatetwo(splited[0]))
+			// 	std::cout << YELLOW << "Error: bad input => " << splited[0] << RESET << std::endl;
+			if (date != -1 && value >= 0)
 				displayeCalculatedRate(date, value);
 			else if (date == -1 || value == -2)
 				std::cout << YELLOW << "Error: bad input => " << splited[0] << RESET << std::endl;

@@ -34,6 +34,9 @@ rmedium:
 rsmall: 
 	./$(NAME) `jot -r 10 1 100 | tr '\n' ' '`
 
+rvbig:
+	./$(NAME) `jot -r 10000 1 100000 | tr '\n' ' '`
+
 sbig: 
 	./$(NAME) `jot 3000 1 1000 | tr '\n' ' '`
 

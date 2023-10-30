@@ -33,14 +33,30 @@ static std::string trimSpace(std::string str) {
 }
 
 int RPN::computeRPN(const std::string & input) {
+
     if ((trimSpace(input)).empty()) {
-        throw::std::runtime_error("Error empty Input");
+        throw::std::runtime_error("Error: empty Input");
     }
 	for (std::string::const_iterator it = input.begin(); it != input.end(); ++it) {
 		if (std::isspace(*it))
 			continue;
-		else if (std::isdigit(*it))
-			RPN::PushToken(static_cast<int>(*it - '0'));
+		else if (std::isdigit(*it)) {
+            int i = 0;
+            std::string::const_iterator tmpiter = it;
+            for(; tmpiter != input.end(); tmpiter++) {
+                if (std::isdigit(*tmpiter))
+                    i++;
+                else
+                    break;
+            }
+            std::string expectsString(it, it + i) ;
+            std::advance (it, i-1);
+            int num = static_cast<int>(std::strtod(expectsString.c_str(), NULL));
+            if (num > 9)
+                throw::std::runtime_error("Error : number shouldn't be greater than 9");
+            RPN::PushToken(num);
+			// RPN::PushToken(static_cast<int>(*it - '0'));
+        }
 		else
 			RPN::Operate(static_cast<unsigned char>(*it));
 	}
@@ -74,6 +90,7 @@ void RPN::Operate(unsigned char opesign) {
         PushToken(res);
     }
     else {
+        std::cerr << opesign << std::endl;
         throw std::runtime_error("Invalid operator/operand");
     }
 }
