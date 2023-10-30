@@ -102,15 +102,27 @@ static bool allDigits(std::string str) {
 int checkDatetwo(std::string inputdate) {
 	std::string *splitedDate = splitdate(inputdate, "-");
 
-	if (!allDigits(trimSpace(splitedDate[0]))) {
+	// if (!allDigits(trimSpace(splitedDate[0]))) {
+	// 	return (delete [] splitedDate, 0);
+	// }
+
+	if (!allDigits(leftTrim(splitedDate[0]))) {
 		return (delete [] splitedDate, 0);
 	}
 
-	if ((!allDigits(trimSpace(splitedDate[1])))) {
+	// if ((!allDigits(trimSpace(splitedDate[1])))) {
+	// 	return (delete [] splitedDate, 0);
+	// }
+
+	if ((!allDigits(splitedDate[1]))) {
 		return (delete [] splitedDate, 0);
 	}
 
-	if (!allDigits(trimSpace(splitedDate[2])))  {
+	// if (!allDigits(trimSpace(splitedDate[2])))  {
+	// 	return (delete [] splitedDate, 0);
+	// }
+
+	if (!allDigits(rightTrim(splitedDate[2])))  {
 		return (delete [] splitedDate, 0);
 	}
 	
